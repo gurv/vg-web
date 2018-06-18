@@ -1,0 +1,37 @@
+<!--TODO форма дб по центру -->
+<mat-tab-group fxLayout="column" fxLayoutAlign="center center">
+  <mat-tab label="Вход">
+    <form>
+      <mat-accordion>
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Имя и пароль
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <input matInput placeholder="Имя">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Пароль">
+          </mat-form-field>
+          <div fxlayout="row" fxlayoutAlign="space-between center">
+            <mat-checkbox disabled="true">Запомнить</mat-checkbox>
+          </div>
+          <button mat-raised-button fxFlexFill>Войти</button>
+        </mat-expansion-panel>
+        <mat-expansion-panel disabled="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>или</mat-panel-title>
+          </mat-expansion-panel-header>
+          <button mat-raised-button fxlayout="row" fxFlexFill>Okta</button>
+          <button mat-raised-button fxlayout="row" fxFlexFill disabled="true">Google</button>
+          <button mat-raised-button fxlayout="row" fxFlexFill disabled="true">Microsoft</button>
+          <button mat-raised-button fxlayout="row" fxFlexFill disabled="true">Twitter</button>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </form>
+  </mat-tab>
+  <mat-tab label="Регистрация" disabled="true">
+  </mat-tab>
+</mat-tab-group>
