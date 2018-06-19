@@ -1,7 +1,7 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { OperationService } from "@app/static/dashboard/operation/operation.service";
-import { TimerObservable } from "rxjs/observable/TimerObservable";
-
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {OperationService} from '@app/static/dashboard/operation/operation.service';
+import {timer} from 'rxjs';
+import {takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'app-operation',
@@ -32,9 +32,11 @@ export class OperationComponent implements OnInit, OnDestroy {
   }
 
   getData(): void {
-    TimerObservable.create(0, this.interval)
-      .takeWhile(() => this.alive)
-      .subscribe(() => {
+    timer(0, this.interval)
+        .pipe(
+            takeWhile(() => this.alive)
+        )
+        .subscribe(() => {
         this.operationService.countAll()
           .subscribe(
             result => {

@@ -5,9 +5,10 @@
  */
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
-import {Observable} from "rxjs";
-import {CbrCurrencyRate} from "./cbr-currency-rate";
-import {CbrCurrency} from "./cbr-currency";
+import {Observable} from 'rxjs';
+import {CbrCurrencyRate} from './cbr-currency-rate';
+import {CbrCurrency} from './cbr-currency';
+import { tap } from 'rxjs/operators';
 
 interface Response {
   readonly text: string;
@@ -22,27 +23,31 @@ export class CbrCurrencyRateService {
   }
 
   getCurrencyRates(): Observable<any> {
-    return this.http.get('/scripts/XML_daily.asp')
-      .do(res => console.log("result: ", res))
-      .do((res: HttpResponse<Response>) => console.log('parse: ', this.xml2CurrencyRates(res.body.text)))
-      .map((data) =>
-        this.data = data
-      );
+    return this.http
+        .get('/scripts/XML_daily.asp')
+        .pipe(
+            tap(res => console.log('result: ', res)),
+            tap((res: HttpResponse<Response>) => console.log('parse: ', this.xml2CurrencyRates(res.body.text)))
+/*
+        .map((data) =>
+            this.data = data
+*/
+        );
   }
 
   getCurrencyRatesByCurrencyAndDateRange(cbrCurrency: CbrCurrency,
                                          beginDate: Date,
                                          endDate: Date): Observable<any> {
-    return this.http.get('/scripts/XML_dynamic.asp')
-      .do(res => console.log("result: ", res))
-      .do((res: HttpResponse<Response>) => console.log('parse: ', this.xml2CurrencyRates(res.body.text)))
-      .map((data) =>
-        this.data = data
-      );
+    return this.http
+        .get('/scripts/XML_dynamic.asp')
+        .pipe(
+          tap(res => console.log('result: ', res)),
+          tap((res: HttpResponse<Response>) => console.log('parse: ', this.xml2CurrencyRates(res.body.text)))
+          );
   }
 
   private xml2CurrencyRates(xml: string): any {
-    let result : Array<CbrCurrencyRate> = [];
+    const result: Array<CbrCurrencyRate> = [];
 
     let parser = new DOMParser();
     let doc: XMLDocument = parser.parseFromString(xml, "text/xml");

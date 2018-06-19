@@ -5,8 +5,9 @@
  */
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
-import {Observable} from "rxjs";
-import {CbrCurrency} from "./cbr-currency";
+import {Observable} from 'rxjs';
+import {CbrCurrency} from './cbr-currency';
+import { map ,  tap } from 'rxjs/operators';
 
 interface Response {
   readonly text: string;
@@ -21,19 +22,22 @@ export class CbrCurrencyService {
   }
 
   getCurrencies(): Observable<CbrCurrency[]> {
-    return this.http.get(this.url)
-      .map((response: HttpResponse<Response>) => this.parseXml(response.body.text))
-      .do((data: CbrCurrency[]) => console.debug("Подготовлен список валют Банка России в количестве", data.length, "шт."))
+    return this.http
+        .get(this.url)
+        .pipe(
+            map((response: HttpResponse<Response>) => this.parseXml(response.body.text)),
+            tap((data: CbrCurrency[]) => console.log('Подготовлен список валют Банка России в количестве', data.length, 'шт.'))
+        );
   }
 
   private parseXml(xml: string): CbrCurrency[] {
 
-    let result : Array<CbrCurrency> = [];
+    const result: Array<CbrCurrency> = [];
 
-    let parser = new DOMParser();
-    let doc: XMLDocument = parser.parseFromString(xml, "text/xml");
+    const parser = new DOMParser();
+    const doc: XMLDocument = parser.parseFromString(xml, 'text/xml');
 
-    let nodes : NodeListOf<Element> = doc.getElementsByTagName("Item");
+    const nodes: NodeListOf<Element> = doc.getElementsByTagName('Item');
     if (nodes) {
       for (let i = 0; i < nodes.length; i++) {
         let id: string = nodes[i].getAttribute("ID");

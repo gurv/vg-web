@@ -5,9 +5,9 @@
  */
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable} from "rxjs";
-import {CbrCurrencyRate} from "./cbr-currency-rate";
-import {CbrCurrency} from "./cbr-currency";
+import {Observable} from 'rxjs';
+import {CbrCurrencyRate} from './cbr-currency-rate';
+import {CbrCurrency} from './cbr-currency';
 import { map ,  tap } from 'rxjs/operators';
 
 @Injectable()
@@ -35,9 +35,9 @@ export class CbrCurrencyRateDynamicService {
           this.parseXml(response)
         ),
         tap((data: CbrCurrencyRate[]) =>
-          console.debug("Подготовлен список курсов Банка России валюты", currency.isoCharCode, "в количестве", data.length, "шт.")
+          console.log('Подготовлен список курсов Банка России валюты', currency.isoCharCode, 'в количестве', data.length, 'шт.')
         )
-      )
+      );
   }
 
   private dateToString(date: Date): string {

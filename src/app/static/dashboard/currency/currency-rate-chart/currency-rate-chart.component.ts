@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {CbrCurrencyService} from "../cbr-currency/cbr-currency.service";
-import {CbrCurrencyRateDynamicService} from "../cbr-currency/cbr-currency-rate-dynamic.service";
-import {CbrCurrency} from "../cbr-currency/cbr-currency";
-import {CbrCurrencyRate} from "../cbr-currency/cbr-currency-rate";
-import {Observable} from "rxjs";
+import {CbrCurrencyService} from '../cbr-currency/cbr-currency.service';
+import {CbrCurrencyRateDynamicService} from '../cbr-currency/cbr-currency-rate-dynamic.service';
+import {CbrCurrency} from '../cbr-currency/cbr-currency';
+import {CbrCurrencyRate} from '../cbr-currency/cbr-currency-rate';
+import {Observable, zip} from 'rxjs';
 
 @Component({
   selector: 'app-currency-rate-chart',
@@ -46,7 +46,7 @@ export class CurrencyRateChartComponent implements OnInit {
       }
 
       // Запрос и обработка курсов валют
-      Observable.zip.apply(null, batch)
+      zip.apply(null, batch)
           .subscribe(
             data => {
               // Таблица графика
@@ -57,7 +57,7 @@ export class CurrencyRateChartComponent implements OnInit {
               firstRow.push('Дата');
               for (let i = 0; i < data.length; i++) {
                 let idx: number = this.currencies.findIndex(
-                  currency => currency.id == data[i][0].cbrCurrencyId
+                  currency => currency.id === data[i][0].cbrCurrencyId
                 );
                 firstRow.push(this.currencies[idx].isoCharCode);
               }
