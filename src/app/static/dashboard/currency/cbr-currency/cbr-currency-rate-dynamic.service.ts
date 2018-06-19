@@ -8,8 +8,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {CbrCurrencyRate} from "./cbr-currency-rate";
 import {CbrCurrency} from "./cbr-currency";
-import { map } from 'rxjs/operators/map';
-import { tap } from 'rxjs/operators/tap';
+import { map ,  tap } from 'rxjs/operators';
 
 @Injectable()
 export class CbrCurrencyRateDynamicService {
