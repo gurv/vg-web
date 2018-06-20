@@ -1,5 +1,3 @@
-// FIXME компонент сломался
-
 import {Component, OnInit} from '@angular/core';
 import {CbrCurrencyService} from '../cbr-currency/cbr-currency.service';
 import {CbrCurrencyRateDynamicService} from '../cbr-currency/cbr-currency-rate-dynamic.service';
