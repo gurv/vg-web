@@ -1,16 +1,31 @@
 = Web
 
-* Запуск в dev-режиме
+== Разработчику
+
+* Подготовка рабочего места
+
+** Установить Node.js последней версии
+
+** Установить Angular CLI
++
 ----
-npm run proxy-start
+npm install -g @angular/cli
+----
+
+** Загрузить код
++
+----
+git clone https://github.com/gurv/vg-web.git
+----
+
+* Запуск в dev-режиме
++
+----
+ng serve --proxy-config proxy.conf.json
 ----
 
 * Сборка (в каталог last-build)
++
 ----
-npm run prod-build
-----
-
-* Удаление сборки
-----
-npm run dist-clean
+ng build --output-path=last-build/ --env=prod
 ----

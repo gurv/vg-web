@@ -4,13 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "proxy-start": "ng serve --proxy-config proxy.conf.json",
-    "build": "ng build",
-    "prod-build": "ng build --output-path=last-build/ --env=prod",
-    "clean": "npm cache clean --force && npm run dist-clean && rimraf -- node_modules",
-    "dist-clean": "npm run rimraf -- last-build && npm run rimraf -- tmp",
-    "rimraf": "rimraf",
+    "start": "ng serve --proxy-config proxy.conf.json",
+    "build": "ng build --output-path=last-build/ --env=prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
