@@ -1,3 +1,5 @@
+// FIXME компонент сломался
+
 import {Component, OnInit} from '@angular/core';
 import {CbrCurrencyService} from '../cbr-currency/cbr-currency.service';
 import {CbrCurrencyRateDynamicService} from '../cbr-currency/cbr-currency-rate-dynamic.service';
@@ -13,8 +15,8 @@ import {Observable, zip} from 'rxjs';
 })
 export class CurrencyRateChartComponent implements OnInit {
 
-  readonly data
-  readonly currency : CbrCurrency = <CbrCurrency> {id: 'R01235', isoNumCode: '840', isoCharCode: 'USD', nominal: 1};
+  readonly data;
+  readonly currency: CbrCurrency = <CbrCurrency> {id: 'R01235', isoNumCode: '840', isoCharCode: 'USD', nominal: 1};
   beginDate: Date = new Date('2017-01-01');
   endDate: Date = new Date('2018-01-01');
   readonly currencies: ReadonlyArray<CbrCurrency> = [
@@ -36,7 +38,7 @@ export class CurrencyRateChartComponent implements OnInit {
 
   getData(): void {
       // Подготовка пакета запросов курсов валют
-      let batch: Array<Observable<CbrCurrencyRate[]>> = [];
+      const batch: Array<Observable<CbrCurrencyRate[]>> = [];
       for (let i = 0; i < this.currencies.length; i++) {
         batch.push(
           this.cbrCurrencyRateDynamicService.getCurrencyRates(
@@ -50,13 +52,13 @@ export class CurrencyRateChartComponent implements OnInit {
           .subscribe(
             data => {
               // Таблица графика
-              let chartTable: (string | number)[][] = [];
+              const chartTable: (string | number)[][] = [];
 
               // Заполнение первой строки таблицы, которая содержит заголовок дат и валют
-              let firstRow: (string)[] = [];
+              const firstRow: (string)[] = [];
               firstRow.push('Дата');
               for (let i = 0; i < data.length; i++) {
-                let idx: number = this.currencies.findIndex(
+                const idx: number = this.currencies.findIndex(
                   currency => currency.id === data[i][0].cbrCurrencyId
                 );
                 firstRow.push(this.currencies[idx].isoCharCode);
@@ -66,10 +68,10 @@ export class CurrencyRateChartComponent implements OnInit {
               // Заполнение таблицы данными курсов валют
               if (data.length > 0) {
                 for (let r = 0; r < data[0].length; r++) {
-                  let row: (string | number)[] = [];
+                  const row: (string | number)[] = [];
                   for (let c = 0; c < data.length; c++) {
-                    let rate: CbrCurrencyRate = data[c][r];
-                    if (c == 0) {
+                    const rate: CbrCurrencyRate = data[c][r];
+                    if (c === 0) {
                       row.push(rate.date.toLocaleDateString());
                     }
                     row.push(rate.value);
@@ -77,7 +79,7 @@ export class CurrencyRateChartComponent implements OnInit {
                   chartTable.push(row);
                 }
               }
-              console.debug('Подготовлена таблица данных графика курсов валют');
+              console.log('Подготовлена таблица данных графика курсов валют');
 
               this.columnChartOptions = Object.create(this.columnChartOptions);
               this.columnChartOptions.dataTable = chartTable;

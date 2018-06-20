@@ -49,27 +49,27 @@ export class CbrCurrencyRateService {
   private xml2CurrencyRates(xml: string): any {
     const result: Array<CbrCurrencyRate> = [];
 
-    let parser = new DOMParser();
-    let doc: XMLDocument = parser.parseFromString(xml, "text/xml");
+    const parser = new DOMParser();
+    const doc: XMLDocument = parser.parseFromString(xml, 'text/xml');
 
-    let rateDateString: string = doc.documentElement.getAttribute("Date");
-    let rateDate: Date = new Date(Date.UTC(
-      Number(rateDateString.substring(6,10)),
-      Number(rateDateString.substring(3,5)) - 1,
-      Number(rateDateString.substring(0,2))
+    const rateDateString: string = doc.documentElement.getAttribute('Date');
+    const rateDate: Date = new Date(Date.UTC(
+      Number(rateDateString.substring(6, 10)),
+      Number(rateDateString.substring(3, 5)) - 1,
+      Number(rateDateString.substring(0, 2))
     ));
 
-    let nodes : NodeListOf<Element> = doc.getElementsByTagName("Valute");
+    const nodes: NodeListOf<Element> = doc.getElementsByTagName('Valute');
     if (nodes) {
       for (let i = 0; i < nodes.length; i++) {
-        let cbrCurrencyId: string = "TODO"; //TODO связать с...
-        let value: number = 0;
+        const cbrCurrencyId = 'TODO'; // TODO связать с...
+        let value = 0;
 
-        let rateNodes : NodeList = nodes[i].childNodes;
-        for (let i = 0; i < rateNodes.length; i++) {
-          let rateNode : Node = rateNodes[i];
+        const rateNodes: NodeList = nodes[i].childNodes;
+        for (let i2 = 0; i2 < rateNodes.length; i2++) {
+          const rateNode: Node = rateNodes[i2];
           switch (rateNode.nodeName) {
-            case "Value":
+            case 'Value':
               value = +rateNode.childNodes[0].nodeValue.replace(',', '.');
               break;
           }

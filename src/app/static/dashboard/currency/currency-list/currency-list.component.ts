@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {Iso4217Currency} from "app/static/dashboard/currency/iso4217-currency/iso4217-currency";
-import {Iso4217CurrencyService} from "app/static/dashboard/currency/iso4217-currency/iso4217-currency.service";
-import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import {Iso4217Currency} from 'app/static/dashboard/currency/iso4217-currency/iso4217-currency';
+import {Iso4217CurrencyService} from 'app/static/dashboard/currency/iso4217-currency/iso4217-currency.service';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-currency-list',
@@ -17,7 +17,7 @@ export class CurrencyListComponent implements AfterViewInit {
     'alphabeticCode',
     'numericCode',
     'name'
-  ]
+  ];
   constructor(
     private iso4217CurrencyService: Iso4217CurrencyService
   ) {}

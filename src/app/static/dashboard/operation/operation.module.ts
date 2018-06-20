@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OperationComponent } from './operation.component';
-import { SharedModule } from "@app/shared";
+import { SharedModule } from '@app/shared';
 
 @NgModule({
   imports: [

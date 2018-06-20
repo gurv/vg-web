@@ -40,38 +40,38 @@ export class CbrCurrencyService {
     const nodes: NodeListOf<Element> = doc.getElementsByTagName('Item');
     if (nodes) {
       for (let i = 0; i < nodes.length; i++) {
-        let id: string = nodes[i].getAttribute("ID");
+        const id: string = nodes[i].getAttribute('ID');
         let name: string;
         let engName: string;
         let parentCode: string;
         let isoNumCode: string;
         let isoCharCode: string;
-        let nominal: number = 0;
+        let nominal = 0;
 
-        let curNodes : NodeList = nodes[i].childNodes;
-        for (let i = 0; i < curNodes.length; i++) {
-          let curNode : Node = curNodes[i];
-          if (curNode.childNodes.length == 0) {
+        const curNodes: NodeList = nodes[i].childNodes;
+        for (let i2 = 0; i2 < curNodes.length; i2++) {
+          const curNode: Node = curNodes[i2];
+          if (curNode.childNodes.length === 0) {
             continue;
           }
-          let valueNode : Node = curNode.childNodes[0];
+          const valueNode: Node = curNode.childNodes[0];
           switch (curNode.nodeName) {
-            case "Name":
+            case 'Name':
               name = valueNode.nodeValue;
               break;
-            case "EngName":
+            case 'EngName':
               engName = valueNode.nodeValue;
               break;
-            case "ParentCode":
+            case 'ParentCode':
               parentCode = valueNode.nodeValue;
               break;
-            case "ISO_Num_Code":
+            case 'ISO_Num_Code':
               isoNumCode = valueNode.nodeValue;
               break;
-            case "ISO_Char_Code":
+            case 'ISO_Char_Code':
               isoCharCode = valueNode.nodeValue;
               break;
-            case "Nominal":
+            case 'Nominal':
               nominal = +valueNode.nodeValue.replace(',', '.');
               break;
           }

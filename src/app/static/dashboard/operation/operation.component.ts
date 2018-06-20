@@ -16,7 +16,7 @@ export class OperationComponent implements OnInit, OnDestroy {
   @Input() workingCount: number;
   @Input() processingStarted: boolean;
 
-  private alive: boolean = true;
+  private alive = true;
   private readonly interval: number = 3000;
 
   constructor(
@@ -27,7 +27,7 @@ export class OperationComponent implements OnInit, OnDestroy {
     this.getData();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.alive = false;
   }
 
@@ -60,8 +60,8 @@ export class OperationComponent implements OnInit, OnDestroy {
             result => {
               this.processingStarted = result;
             }
-          )
-    })
+          );
+    });
   }
 
   onChangeProcessingState() {

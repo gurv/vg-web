@@ -3,12 +3,12 @@
  */
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class OperationService {
 
-  private baseUrl: string = '//localhost:8080/operation';
+  private baseUrl = '//localhost:8080/operation';
 
   constructor(private http: HttpClient) { }
 
