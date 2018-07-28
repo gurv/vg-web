@@ -56,9 +56,9 @@ export class CbrCurrencyRateDynamicService {
     const nodes: NodeListOf<Element> = doc.getElementsByTagName('Record');
     if (nodes) {
       for (let i = 0; i < nodes.length; i++) {
-        const node: Node = nodes[i];
+        const element: Element = nodes[i];
 
-        const rateDateString: string = node.attributes.getNamedItem('Date').value;
+        const rateDateString: string = element.attributes.getNamedItem('Date').value;
         const rateDate: Date = new Date(Date.UTC(
           Number(rateDateString.substring(6, 10)),
           Number(rateDateString.substring(3, 5)) - 1,
