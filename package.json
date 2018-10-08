@@ -2,14 +2,6 @@
   "name": "vg",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "ng build --output-path=last-build/ --env=prod",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
-  },
   "private": true,
   "dependencies": {
     "@agm/core": "^1.0.0-beta.3",
