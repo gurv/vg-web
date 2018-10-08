@@ -1,6 +1,6 @@
 <mat-slide-toggle
   [(ngModel)]="processingStarted"
-  (change)="onChangeProcessingState($event)">Обработка</mat-slide-toggle>
+  (change)="onChangeProcessingState()">Обработка</mat-slide-toggle>
 <button mat-raised-button (click)="createOperationBatch()">Создать новых 100 шт.</button>
 <p>Количество: {{count}}</p>
 <p>Новые: {{newCount}}</p>
