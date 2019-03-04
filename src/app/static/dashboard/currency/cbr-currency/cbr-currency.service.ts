@@ -37,7 +37,7 @@ export class CbrCurrencyService {
     const parser = new DOMParser();
     const doc: XMLDocument = parser.parseFromString(xml, 'text/xml');
 
-    const nodes: NodeListOf<Element> = doc.getElementsByTagName('Item');
+    const nodes: HTMLCollectionOf<Element> = doc.getElementsByTagName('Item');
     if (nodes) {
       for (let i = 0; i < nodes.length; i++) {
         const id: string = nodes[i].getAttribute('ID');

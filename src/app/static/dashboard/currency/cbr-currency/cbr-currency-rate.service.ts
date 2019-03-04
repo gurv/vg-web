@@ -59,7 +59,7 @@ export class CbrCurrencyRateService {
       Number(rateDateString.substring(0, 2))
     ));
 
-    const nodes: NodeListOf<Element> = doc.getElementsByTagName('Valute');
+    const nodes: HTMLCollectionOf<Element> = doc.getElementsByTagName('Valute');
     if (nodes) {
       for (let i = 0; i < nodes.length; i++) {
         const cbrCurrencyId = 'TODO'; // TODO связать с...

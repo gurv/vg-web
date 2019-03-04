@@ -53,7 +53,7 @@ export class CbrCurrencyRateDynamicService {
 
     const cbrCurrencyId: string = doc.documentElement.getAttribute('ID');
 
-    const nodes: NodeListOf<Element> = doc.getElementsByTagName('Record');
+    const nodes: HTMLCollectionOf<Element> = doc.getElementsByTagName('Record');
     if (nodes) {
       for (let i = 0; i < nodes.length; i++) {
         const element: Element = nodes[i];
