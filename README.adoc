@@ -12,16 +12,14 @@
 npm install -g @angular/cli
 ----
 
-** Загрузить код
+* Загрузить код
 +
 ----
 git clone https://github.com/gurv/vg-web.git
 ----
 
 * Выполнить end-to-end тесты (http://www.protractortest.org/[Protractor])
-
-FIXME Failed: Timed out waiting for asynchronous Angular tasks to finish after 11 seconds.
-
++
 ----
 ng e2e
 ----
