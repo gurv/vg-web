@@ -20,6 +20,15 @@
         "label": "e2e",
         "type": "npm",
         "script": "e2e",
+        "problemMatcher": [],
+      },
+      {
+        "label": "lint",
+        "type": "npm",
+        "script": "lint",
+        "problemMatcher": [
+          "$eslint-stylish"
+        ]
       }
     ]
   }
