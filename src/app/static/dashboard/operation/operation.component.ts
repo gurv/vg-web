@@ -1,7 +1,7 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {OperationService} from '@app/static/dashboard/operation/operation.service';
-import {timer} from 'rxjs';
-import {takeWhile} from 'rxjs/operators';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { OperationService } from '@app/static/dashboard/operation/operation.service';
+import { timer } from 'rxjs';
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-operation',
@@ -10,7 +10,6 @@ import {takeWhile} from 'rxjs/operators';
   providers: [OperationService]
 })
 export class OperationComponent implements OnInit, OnDestroy {
-
   @Input() count: number;
   @Input() newCount: number;
   @Input() workingCount: number;
@@ -19,9 +18,7 @@ export class OperationComponent implements OnInit, OnDestroy {
   private alive = true;
   private readonly interval: number = 3000;
 
-  constructor(
-    private operationService: OperationService
-  ) {}
+  constructor(private operationService: OperationService) {}
 
   ngOnInit() {
     this.getData();
@@ -33,35 +30,21 @@ export class OperationComponent implements OnInit, OnDestroy {
 
   getData(): void {
     timer(0, this.interval)
-        .pipe(
-            takeWhile(() => this.alive)
-        )
-        .subscribe(() => {
-        this.operationService.countAll()
-          .subscribe(
-            result => {
-              this.count = result;
-            }
-          );
-        this.operationService.countByState(0)
-          .subscribe(
-            result => {
-              this.newCount = result;
-            }
-          );
-        this.operationService.countByState(1)
-          .subscribe(
-            result => {
-              this.workingCount = result;
-            }
-          );
-        this.operationService.isProcessingStarted()
-          .subscribe(
-            result => {
-              this.processingStarted = result;
-            }
-          );
-    });
+      .pipe(takeWhile(() => this.alive))
+      .subscribe(() => {
+        this.operationService.countAll().subscribe((result) => {
+          this.count = result;
+        });
+        this.operationService.countByState(0).subscribe((result) => {
+          this.newCount = result;
+        });
+        this.operationService.countByState(1).subscribe((result) => {
+          this.workingCount = result;
+        });
+        this.operationService.isProcessingStarted().subscribe((result) => {
+          this.processingStarted = result;
+        });
+      });
   }
 
   onChangeProcessingState() {
@@ -75,5 +58,4 @@ export class OperationComponent implements OnInit, OnDestroy {
   createOperationBatch() {
     this.operationService.createOperationBatch().subscribe();
   }
-
 }

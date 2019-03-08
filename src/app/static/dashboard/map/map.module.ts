@@ -10,10 +10,8 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
       apiKey: 'AIzaSyDnwc-bUtWYikIiFN0RrkWC7unt3LpS9hg'
     })
   ],
-  providers: [
-    GoogleMapsAPIWrapper
-  ],
+  providers: [GoogleMapsAPIWrapper],
   exports: [MapComponent],
   declarations: [MapComponent]
 })
-export class MapModule { }
+export class MapModule {}

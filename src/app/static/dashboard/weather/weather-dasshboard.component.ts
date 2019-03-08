@@ -1,5 +1,5 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {OpenWeatherMapService} from './openweathermap/openweathermap.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { OpenWeatherMapService } from './openweathermap/openweathermap.service';
 
 @Component({
   selector: 'app-weather-dashboard',
@@ -8,23 +8,17 @@ import {OpenWeatherMapService} from './openweathermap/openweathermap.service';
   providers: [OpenWeatherMapService]
 })
 export class WeatherDashboardComponent implements OnInit {
-
   @Input() weather: number;
-  constructor(
-    private openWeatherMapService: OpenWeatherMapService
-  ) {}
+  constructor(private openWeatherMapService: OpenWeatherMapService) {}
 
   ngOnInit() {
     this.getData();
   }
 
   getData(): void {
-    this.openWeatherMapService.getWeather()
-      .subscribe(
-        weather => {
-          console.log('погода', weather);
-          this.weather = weather.main.temp;
-        }
-      );
+    this.openWeatherMapService.getWeather().subscribe((weather) => {
+      console.log('погода', weather);
+      this.weather = weather.main.temp;
+    });
   }
 }

@@ -3,39 +3,42 @@
 
  источник данных: https://www.cbr.ru/scripts/Root.asp
  */
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {CbrCurrencyRate} from './cbr-currency-rate';
-import {CbrCurrency} from './cbr-currency';
-import { map ,  tap } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CbrCurrencyRate } from './cbr-currency-rate';
+import { CbrCurrency } from './cbr-currency';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class CbrCurrencyRateDynamicService {
-
   private url = '/scripts/XML_dynamic.asp';
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
-  getCurrencyRates(currency: CbrCurrency,
-                   beginDate: Date,
-                   endDate: Date): Observable<CbrCurrencyRate[]> {
-
+  getCurrencyRates(
+    currency: CbrCurrency,
+    beginDate: Date,
+    endDate: Date
+  ): Observable<CbrCurrencyRate[]> {
     return this.http
       .get(this.url, {
-        responseType: 'text'  as 'json', // TODO https://github.com/angular/angular/issues/18586
-        params : new HttpParams()
+        responseType: 'text' as 'json', // TODO https://github.com/angular/angular/issues/18586
+        params: new HttpParams()
           .set('date_req1', this.dateToString(beginDate))
           .set('date_req2', this.dateToString(endDate))
           .set('VAL_NM_RQ', currency.id)
       })
       .pipe(
-        map((response: string) =>
-          this.parseXml(response)
-        ),
+        map((response: string) => this.parseXml(response)),
         tap((data: CbrCurrencyRate[]) =>
-          console.log('Подготовлен список курсов Банка России валюты', currency.isoCharCode, 'в количестве', data.length, 'шт.')
+          console.log(
+            'Подготовлен список курсов Банка России валюты',
+            currency.isoCharCode,
+            'в количестве',
+            data.length,
+            'шт.'
+          )
         )
       );
   }
@@ -45,7 +48,6 @@ export class CbrCurrencyRateDynamicService {
   }
 
   private parseXml(xml: string): CbrCurrencyRate[] {
-
     const result: Array<CbrCurrencyRate> = [];
 
     const parser = new DOMParser();
@@ -59,11 +61,13 @@ export class CbrCurrencyRateDynamicService {
         const element: Element = nodes[i];
 
         const rateDateString: string = element.attributes.getNamedItem('Date').value;
-        const rateDate: Date = new Date(Date.UTC(
-          Number(rateDateString.substring(6, 10)),
-          Number(rateDateString.substring(3, 5)) - 1,
-          Number(rateDateString.substring(0, 2))
-        ));
+        const rateDate: Date = new Date(
+          Date.UTC(
+            Number(rateDateString.substring(6, 10)),
+            Number(rateDateString.substring(3, 5)) - 1,
+            Number(rateDateString.substring(0, 2))
+          )
+        );
         let rateValue = 0;
 
         const rateNodes: NodeList = nodes[i].childNodes;
@@ -80,15 +84,10 @@ export class CbrCurrencyRateDynamicService {
           }
         }
 
-        result.push(new CbrCurrencyRate(
-          cbrCurrencyId,
-          rateDate,
-          rateValue
-        ));
+        result.push(new CbrCurrencyRate(cbrCurrencyId, rateDate, rateValue));
       }
     }
 
     return result;
   }
-
 }

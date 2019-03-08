@@ -2,15 +2,14 @@
  Сервис операций (пример)
  */
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class OperationService {
-
   private baseUrl = '//localhost:8080/operation';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   countAll(): Observable<any> {
     return this.http.get(this.baseUrl + '/search/countAll');
@@ -18,23 +17,19 @@ export class OperationService {
 
   countByTimestampLessThanEqual(ts: Date): Observable<any> {
     return this.http.get(this.baseUrl + '/search/countByTimestampLessThanEqual', {
-      params : new HttpParams()
-        .set('ts', ts.toISOString())
+      params: new HttpParams().set('ts', ts.toISOString())
     });
   }
 
   countByTimestampLessThanEqualAndState(ts: Date, state: number): Observable<any> {
     return this.http.get(this.baseUrl + '/search/countByTimestampLessThanEqualAndState', {
-      params : new HttpParams()
-        .set('ts', ts.toISOString())
-        .set('state', state.toString())
+      params: new HttpParams().set('ts', ts.toISOString()).set('state', state.toString())
     });
   }
 
   countByState(state: number): Observable<any> {
     return this.http.get(this.baseUrl + '/search/countByState', {
-      params : new HttpParams()
-        .set('state', state.toString())
+      params: new HttpParams().set('state', state.toString())
     });
   }
 

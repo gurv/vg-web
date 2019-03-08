@@ -5,14 +5,10 @@ import { Iso4217Currency } from 'app/static/dashboard/currency/iso4217-currency/
 
 @Injectable()
 export class Iso4217CurrencyService {
-
   private url = 'assets/data/iso-4217-currencies.json';
-  constructor(
-    private http: HttpClient
-  ) {}
+  constructor(private http: HttpClient) {}
 
   getCurrencies(): Observable<Iso4217Currency[]> {
-    return this.http
-      .get<Iso4217Currency[]>(this.url);
+    return this.http.get<Iso4217Currency[]>(this.url);
   }
 }

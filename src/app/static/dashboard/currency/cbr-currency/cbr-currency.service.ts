@@ -3,11 +3,11 @@
 
  источник данных: https://www.cbr.ru/scripts/Root.asp
  */
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpResponse} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {CbrCurrency} from './cbr-currency';
-import { map ,  tap } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CbrCurrency } from './cbr-currency';
+import { map, tap } from 'rxjs/operators';
 
 interface Response {
   readonly text: string;
@@ -15,23 +15,20 @@ interface Response {
 
 @Injectable()
 export class CbrCurrencyService {
-
   private readonly url: string = '/scripts/XML_valFull.asp';
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getCurrencies(): Observable<CbrCurrency[]> {
-    return this.http
-        .get(this.url)
-        .pipe(
-            map((response: HttpResponse<Response>) => this.parseXml(response.body.text)),
-            tap((data: CbrCurrency[]) => console.log('Подготовлен список валют Банка России в количестве', data.length, 'шт.'))
-        );
+    return this.http.get(this.url).pipe(
+      map((response: HttpResponse<Response>) => this.parseXml(response.body.text)),
+      tap((data: CbrCurrency[]) =>
+        console.log('Подготовлен список валют Банка России в количестве', data.length, 'шт.')
+      )
+    );
   }
 
   private parseXml(xml: string): CbrCurrency[] {
-
     const result: Array<CbrCurrency> = [];
 
     const parser = new DOMParser();
@@ -77,13 +74,13 @@ export class CbrCurrencyService {
           }
         }
 
-        result.push(<CbrCurrency> {
+        result.push(<CbrCurrency>{
           id: id,
           name: name,
           engName: engName,
           parentCode: parentCode,
           isoNumCode: isoNumCode,
-          isoCharCode : isoCharCode,
+          isoCharCode: isoCharCode,
           nominal: nominal
         });
       }
@@ -91,5 +88,4 @@ export class CbrCurrencyService {
 
     return result;
   }
-
 }

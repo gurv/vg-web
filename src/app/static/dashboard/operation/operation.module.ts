@@ -4,11 +4,8 @@ import { OperationComponent } from './operation.component';
 import { SharedModule } from '@app/shared';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-  ],
+  imports: [CommonModule, SharedModule],
   exports: [OperationComponent],
   declarations: [OperationComponent]
 })
-export class OperationModule { }
+export class OperationModule {}

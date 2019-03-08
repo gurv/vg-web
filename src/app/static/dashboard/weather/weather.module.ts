@@ -1,14 +1,11 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { SharedModule } from '@app/shared';
 
-import {WeatherDashboardComponent} from './weather-dasshboard.component';
+import { WeatherDashboardComponent } from './weather-dasshboard.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-  ],
+  imports: [CommonModule, SharedModule],
   exports: [WeatherDashboardComponent],
   declarations: [WeatherDashboardComponent]
 })

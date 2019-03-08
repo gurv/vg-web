@@ -8,4 +8,4 @@ import { SharedModule } from '@app/shared';
   exports: [ToolchainComponent],
   declarations: [ToolchainComponent]
 })
-export class ToolchainModule { }
+export class ToolchainModule {}

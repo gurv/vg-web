@@ -6,8 +6,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./currency.component.scss']
 })
 export class CurrencyComponent implements OnInit {
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

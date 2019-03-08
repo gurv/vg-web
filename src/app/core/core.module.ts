@@ -6,13 +6,8 @@ import { CoreRoutingModule } from '@app/core/core-routing.module';
 import { SharedModule } from '@app/shared';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    CoreRoutingModule,
-    HttpClientModule,
-  ],
-  declarations: [LoginComponent],
+  imports: [CommonModule, SharedModule, CoreRoutingModule, HttpClientModule],
+  declarations: [LoginComponent]
 })
 export class CoreModule {
   constructor(

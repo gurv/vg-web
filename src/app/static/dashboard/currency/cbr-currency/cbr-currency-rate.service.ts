@@ -3,11 +3,11 @@
 
  источник данных: https://www.cbr.ru/scripts/Root.asp
  */
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpResponse} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {CbrCurrencyRate} from './cbr-currency-rate';
-import {CbrCurrency} from './cbr-currency';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CbrCurrencyRate } from './cbr-currency-rate';
+import { CbrCurrency } from './cbr-currency';
 import { tap } from 'rxjs/operators';
 
 interface Response {
@@ -16,34 +16,34 @@ interface Response {
 
 @Injectable()
 export class CbrCurrencyRateService {
-
   private data: any;
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getCurrencyRates(): Observable<any> {
-    return this.http
-        .get('/scripts/XML_daily.asp')
-        .pipe(
-            tap(res => console.log('result: ', res)),
-            tap((res: HttpResponse<Response>) => console.log('parse: ', this.xml2CurrencyRates(res.body.text)))
-/*
+    return this.http.get('/scripts/XML_daily.asp').pipe(
+      tap((res) => console.log('result: ', res)),
+      tap((res: HttpResponse<Response>) =>
+        console.log('parse: ', this.xml2CurrencyRates(res.body.text))
+      )
+      /*
         .map((data) =>
             this.data = data
 */
-        );
+    );
   }
 
-  getCurrencyRatesByCurrencyAndDateRange(cbrCurrency: CbrCurrency,
-                                         beginDate: Date,
-                                         endDate: Date): Observable<any> {
-    return this.http
-        .get('/scripts/XML_dynamic.asp')
-        .pipe(
-          tap(res => console.log('result: ', res)),
-          tap((res: HttpResponse<Response>) => console.log('parse: ', this.xml2CurrencyRates(res.body.text)))
-          );
+  getCurrencyRatesByCurrencyAndDateRange(
+    cbrCurrency: CbrCurrency,
+    beginDate: Date,
+    endDate: Date
+  ): Observable<any> {
+    return this.http.get('/scripts/XML_dynamic.asp').pipe(
+      tap((res) => console.log('result: ', res)),
+      tap((res: HttpResponse<Response>) =>
+        console.log('parse: ', this.xml2CurrencyRates(res.body.text))
+      )
+    );
   }
 
   private xml2CurrencyRates(xml: string): any {
@@ -53,11 +53,13 @@ export class CbrCurrencyRateService {
     const doc: XMLDocument = parser.parseFromString(xml, 'text/xml');
 
     const rateDateString: string = doc.documentElement.getAttribute('Date');
-    const rateDate: Date = new Date(Date.UTC(
-      Number(rateDateString.substring(6, 10)),
-      Number(rateDateString.substring(3, 5)) - 1,
-      Number(rateDateString.substring(0, 2))
-    ));
+    const rateDate: Date = new Date(
+      Date.UTC(
+        Number(rateDateString.substring(6, 10)),
+        Number(rateDateString.substring(3, 5)) - 1,
+        Number(rateDateString.substring(0, 2))
+      )
+    );
 
     const nodes: HTMLCollectionOf<Element> = doc.getElementsByTagName('Valute');
     if (nodes) {
@@ -75,15 +77,10 @@ export class CbrCurrencyRateService {
           }
         }
 
-        result.push(new CbrCurrencyRate(
-          cbrCurrencyId,
-          rateDate,
-          value
-        ));
+        result.push(new CbrCurrencyRate(cbrCurrencyId, rateDate, value));
       }
     }
 
     return result;
   }
-
 }

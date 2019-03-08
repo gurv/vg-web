@@ -6,11 +6,8 @@ import { CurrencyRateChartComponent } from '@app/static/dashboard/currency/curre
 import { CurrencyListComponent } from './currency-list/currency-list.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule
-  ],
+  imports: [CommonModule, SharedModule],
   exports: [CurrencyComponent],
   declarations: [CurrencyComponent, CurrencyRateChartComponent, CurrencyListComponent]
 })
-export class CurrencyModule { }
+export class CurrencyModule {}

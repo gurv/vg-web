@@ -2,7 +2,6 @@
  * Валюта Банка России
  */
 export interface CbrCurrency {
-
   id?: string;
   name?: string;
   engName?: string;
@@ -11,5 +10,4 @@ export interface CbrCurrency {
   isoCharCode?: string;
   iso4217NumericCode?: string;
   nominal?: number;
-
 }
