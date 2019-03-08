@@ -1,5 +1,9 @@
 {
     "typescript.tsdk": "./node_modules/typescript/lib",
     "typescript.tsc.autoDetect": "off",
-    "npm.autoDetect": "on"
+    "npm.autoDetect": "on",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "editor.formatOnSave": true
 }

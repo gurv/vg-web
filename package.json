@@ -13,7 +13,8 @@
     "lint:styles": "stylelint ./src/**/*.scss",
     "lint:ci": "npm run lint && npm run lint:styles",
     "e2e": "ng e2e",
-    "prepush": "npm run lint:ci"
+    "prepush": "npm run lint:ci",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json"
   },
   "dependencies": {
     "@agm/core": "^1.0.0-beta.3",
@@ -52,10 +53,12 @@
     "karma-coverage-istanbul-reporter": "^1.4.2",
     "karma-jasmine": "^1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "prettier": "1.16.4",
     "protractor": "^5.4.2",
     "rimraf": "^2.6.2",
     "ts-node": "~3.2.0",
     "tslint": "5.11.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "3.2.4"
   }
 }
