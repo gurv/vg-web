@@ -3,6 +3,9 @@ import { Iso4217Currency } from '../iso4217-currency/iso4217-currency';
 import { Iso4217CurrencyService } from '../iso4217-currency/iso4217-currency.service';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
+/**
+ * Список курсов валют
+ */
 @Component({
   selector: 'app-currency-list',
   templateUrl: './currency-list.component.html',
@@ -10,6 +13,9 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
   providers: [Iso4217CurrencyService]
 })
 export class CurrencyListComponent implements AfterViewInit {
+  /**
+   * Данные
+   */
   dataSource = new MatTableDataSource<Iso4217Currency>();
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;

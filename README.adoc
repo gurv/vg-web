@@ -41,3 +41,10 @@ ng build --output-path=last-build/ --configuration=production
 tasks: start, test, e2e, lint
 
 * Запуск в StackBlitz: https://stackblitz.com/github/gurv/vg-web
+
+* Документация
+'''
+npm run generate-docs
+npm run serve-docs
+# открыть http://127.0.0.1:8080
+'''
