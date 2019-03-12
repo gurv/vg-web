@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
-
+import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from '../shared';
-
-import { StaticRoutingModule } from './static-routing.module';
 import { AboutComponent } from './about/about.component';
-import { DashboardModule } from '@app/static/dashboard/dashboard.module';
+import { StaticRoutingModule } from './static-routing.module';
 
 @NgModule({
   imports: [SharedModule, StaticRoutingModule, DashboardModule],

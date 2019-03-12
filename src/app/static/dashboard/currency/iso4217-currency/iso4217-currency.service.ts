@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Iso4217Currency } from 'app/static/dashboard/currency/iso4217-currency/iso4217-currency';
+import { Iso4217Currency } from './iso4217-currency';
 
 @Injectable()
 export class Iso4217CurrencyService {

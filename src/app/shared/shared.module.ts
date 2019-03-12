@@ -23,14 +23,14 @@ import {
   MatSlideToggleModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+//import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     FlexLayoutModule,
-    Ng2GoogleChartsModule,
+//    Ng2GoogleChartsModule,
     MatButtonModule,
     MatToolbarModule,
     MatSelectModule,
@@ -54,7 +54,7 @@ import { Ng2GoogleChartsModule } from 'ng2-google-charts';
     CommonModule,
     FormsModule,
     FlexLayoutModule,
-    Ng2GoogleChartsModule,
+//    Ng2GoogleChartsModule,
     MatButtonModule,
     MatMenuModule,
     MatTabsModule,

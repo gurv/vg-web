@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { OperationService } from '@app/static/dashboard/operation/operation.service';
 import { timer } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
+import { OperationService } from './operation.service';
 
 @Component({
   selector: 'app-operation',
