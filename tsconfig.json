@@ -13,7 +13,9 @@
     ],
     "lib": [
       "es2017",
-      "dom"
+      "dom",
+      // TODO https://github.com/angular/material2/issues/14271
+      "dom.iterable"
     ],
     "baseUrl": "src",
     "paths": {
@@ -21,6 +23,7 @@
       "@env/*": [
         "environments/*"
       ]
-    }
+    },
+    "downlevelIteration": true
   }
 }
