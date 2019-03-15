@@ -48,6 +48,7 @@ export class CurrencyRateChartComponent implements OnInit {
 
     // Запрос и обработка курсов валют
     // FIXME data[i].length всегда 0
+    // TODO (lint) zip is deprecated: resultSelector is no longer supported, pipe to map instead
     zip.apply(null, batch).subscribe((data) => {
       // Таблица графика
       const chartTable: Array<Array<string | number>> = [];
