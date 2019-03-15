@@ -81,7 +81,7 @@ export class CbrCurrencyService {
           isoNumCode,
           isoCharCode,
           nominal
-        } as ICbrCurrency);
+        } as any as ICbrCurrency);
       }
     }
 

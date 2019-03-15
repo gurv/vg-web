@@ -13,12 +13,12 @@ import { CbrCurrencyService } from '../cbr-currency/cbr-currency.service';
 })
 export class CurrencyRateChartComponent implements OnInit {
   readonly data;
-  readonly currency: ICbrCurrency = {
+  readonly currency = {
     id: 'R01235',
     isoNumCode: '840',
     isoCharCode: 'USD',
     nominal: 1
-  } as ICbrCurrency;
+  } as any as ICbrCurrency;
   beginDate: Date = new Date('2017-01-01');
   endDate: Date = new Date('2019-01-01');
   readonly currencies: ReadonlyArray<ICbrCurrency> = [
