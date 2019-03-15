@@ -11,3 +11,11 @@ before_script:
 script:
 - ng lint
 - ng build --prod --base-href https://gurv.github.io/vg/
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/vg
+  on:
+    branch: master
