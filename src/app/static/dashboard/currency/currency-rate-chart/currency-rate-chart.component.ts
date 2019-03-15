@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CbrCurrencyService } from '../cbr-currency/cbr-currency.service';
-import { CbrCurrencyRateDynamicService } from '../cbr-currency/cbr-currency-rate-dynamic.service';
+import { Observable, zip } from 'rxjs';
 import { CbrCurrency } from '../cbr-currency/cbr-currency';
 import { CbrCurrencyRate } from '../cbr-currency/cbr-currency-rate';
-import { Observable, zip } from 'rxjs';
+import { CbrCurrencyRateDynamicService } from '../cbr-currency/cbr-currency-rate-dynamic.service';
+import { CbrCurrencyService } from '../cbr-currency/cbr-currency.service';
 
 @Component({
   selector: 'app-currency-rate-chart',
@@ -13,12 +13,12 @@ import { Observable, zip } from 'rxjs';
 })
 export class CurrencyRateChartComponent implements OnInit {
   readonly data;
-  readonly currency: CbrCurrency = <CbrCurrency>{
+  readonly currency: CbrCurrency = {
     id: 'R01235',
     isoNumCode: '840',
     isoCharCode: 'USD',
     nominal: 1
-  };
+  } as CbrCurrency;
   beginDate: Date = new Date('2017-01-01');
   endDate: Date = new Date('2019-01-01');
   readonly currencies: ReadonlyArray<CbrCurrency> = [
@@ -54,10 +54,10 @@ export class CurrencyRateChartComponent implements OnInit {
     // FIXME data[i].length всегда 0
     zip.apply(null, batch).subscribe((data) => {
       // Таблица графика
-      const chartTable: (string | number)[][] = [];
+      const chartTable: Array<Array<string | number>> = [];
 
       // Заполнение первой строки таблицы, которая содержит заголовок дат и валют
-      const firstRow: (string)[] = [];
+      const firstRow: string[] = [];
       firstRow.push('Дата');
       for (let i = 0; i < data.length; i++) {
         if (data[i].length > 0) {
@@ -72,7 +72,7 @@ export class CurrencyRateChartComponent implements OnInit {
       // Заполнение таблицы данными курсов валют
       if (data.length > 0) {
         for (let r = 0; r < data[0].length; r++) {
-          const row: (string | number)[] = [];
+          const row: Array<string | number> = [];
           for (let c = 0; c < data.length; c++) {
             const rate: CbrCurrencyRate = data[c][r];
             if (c === 0) {

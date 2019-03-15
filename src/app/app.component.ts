@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-interface ROUTE {
+interface IRoute {
   title?: string;
   route?: string;
   icon?: string;
@@ -12,12 +12,12 @@ interface ROUTE {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  myRoutes: ROUTE[] = [
+  myRoutes: IRoute[] = [
     {
       title: 'Пример. Операции',
       route: 'operation',
       icon: 'home'
     }
   ];
-  showHelpMenu: boolean = false;
+  showHelpMenu = false;
 }

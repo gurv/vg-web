@@ -3,11 +3,11 @@
 
  источник данных: https://www.cbr.ru/scripts/Root.asp
  */
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CbrCurrency } from './cbr-currency';
 import { map, tap } from 'rxjs/operators';
+import { CbrCurrency } from './cbr-currency';
 
 interface Response {
   readonly text: string;
@@ -29,7 +29,7 @@ export class CbrCurrencyService {
   }
 
   private parseXml(xml: string): CbrCurrency[] {
-    const result: Array<CbrCurrency> = [];
+    const result: CbrCurrency[] = [];
 
     const parser = new DOMParser();
     const doc: XMLDocument = parser.parseFromString(xml, 'text/xml');
@@ -74,15 +74,15 @@ export class CbrCurrencyService {
           }
         }
 
-        result.push(<CbrCurrency>{
-          id: id,
-          name: name,
-          engName: engName,
-          parentCode: parentCode,
-          isoNumCode: isoNumCode,
-          isoCharCode: isoCharCode,
-          nominal: nominal
-        });
+        result.push({
+          id,
+          name,
+          engName,
+          parentCode,
+          isoNumCode,
+          isoCharCode,
+          nominal
+        } as CbrCurrency);
       }
     }
 

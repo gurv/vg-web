@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared';
-import { OperationComponent } from './operation.component';
 import { OperationRoutingModule } from './operation-routing.module';
+import { OperationComponent } from './operation.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, OperationRoutingModule],

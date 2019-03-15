@@ -3,12 +3,12 @@
 
  источник данных: https://www.cbr.ru/scripts/Root.asp
  */
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CbrCurrencyRate } from './cbr-currency-rate';
-import { CbrCurrency } from './cbr-currency';
 import { map, tap } from 'rxjs/operators';
+import { CbrCurrency } from './cbr-currency';
+import { CbrCurrencyRate } from './cbr-currency-rate';
 
 @Injectable()
 export class CbrCurrencyRateDynamicService {
@@ -48,7 +48,7 @@ export class CbrCurrencyRateDynamicService {
   }
 
   private parseXml(xml: string): CbrCurrencyRate[] {
-    const result: Array<CbrCurrencyRate> = [];
+    const result: CbrCurrencyRate[] = [];
 
     const parser = new DOMParser();
     const doc: XMLDocument = parser.parseFromString(xml, 'text/xml');

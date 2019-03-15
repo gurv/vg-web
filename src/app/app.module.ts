@@ -6,9 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core';
 import { BarComponent } from './core/bar/bar.component';
+import { OperationModule } from './operation/operation.module';
 import { SharedModule } from './shared';
 import { StaticModule } from './static';
-import { OperationModule } from './operation/operation.module';
 
 @NgModule({
   declarations: [AppComponent, BarComponent],

@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MapComponent } from './map.component';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MapComponent } from './map.component';
 
 @NgModule({
   imports: [
