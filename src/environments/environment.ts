@@ -1,3 +1,5 @@
+// TODO
+/* tslint:disable-next-line:no-var-requires */
 const packageJson = require('../../package.json');
 
 export const environment = {
