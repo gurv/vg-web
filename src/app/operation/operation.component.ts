@@ -16,7 +16,7 @@ export class OperationComponent implements OnInit, OnDestroy {
   @Input() processingStarted: boolean;
   @Input() on: boolean;
 
-  private alive = false;
+  alive = false;
   private readonly interval: number = 3000;
 
   constructor(private operationService: OperationService) {}
