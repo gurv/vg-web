@@ -14,8 +14,9 @@ export class OperationComponent implements OnInit, OnDestroy {
   @Input() newCount: number;
   @Input() workingCount: number;
   @Input() processingStarted: boolean;
+  @Input() on: boolean;
 
-  private alive = true;
+  private alive = false;
   private readonly interval: number = 3000;
 
   constructor(private operationService: OperationService) {}
@@ -57,5 +58,12 @@ export class OperationComponent implements OnInit, OnDestroy {
 
   createOperationBatch() {
     this.operationService.createOperationBatch().subscribe();
+  }
+
+  onAlive() {
+    this.alive = !this.alive;
+    if (this.alive) {
+      this.getData();
+    }
   }
 }

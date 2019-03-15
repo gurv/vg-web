@@ -1,24 +1,38 @@
-<nav>
-  <mat-toolbar>
-    <button mat-icon-button aria-label="Menu" disabled>
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>{{title}}</span>
-    <div class="flex-spacer"></div>
-    <button mat-icon-button *ngIf="info">
-      <mat-icon>info</mat-icon>
-    </button>
-    <button mat-icon-button disabled>
-      <mat-icon>power_settings_new</mat-icon>
-    </button>
-    <button mat-icon-button *ngIf="powerOn">
-      <mat-icon>exit_to_app</mat-icon>
-    </button>
-    <button mat-icon-button disabled>
-      <mat-icon>more_vert</mat-icon>
-    </button>
-  </mat-toolbar>
-  <div>
-    <router-outlet #o="outlet"></router-outlet>
-  </div>
-</nav>
+<app-bar (toggleSidenav)="sidenav.toggle()"></app-bar>
+<mat-sidenav-container class="container" autosize>
+  <mat-sidenav #sidenav class="sidenav" mode="side">
+    <mat-nav-list>
+        <mat-list-item [routerLink]="['dashboard']"
+            routerLinkActive
+            #routerLinkActiveInstance="routerLinkActive"
+            [class.list-item-active]="routerLinkActiveInstance.isActive">
+          <mat-icon matListIcon>dashboard</mat-icon>
+          Обзор
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let item of myRoutes"          
+            [routerLink]="[item.route]">
+          <mat-icon matListIcon>{{ item.icon }}</mat-icon>
+          {{item.title}}
+        </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+          <mat-icon matListIcon>settings</mat-icon>
+        Настройки
+      </mat-list-item>
+      <mat-list-item (click)="showHelpMenu = !showHelpMenu">
+				<span class="full-width">Помощь</span>
+				<mat-icon class="menu-button" [ngClass]="{'rotated' : showHelpMenu}">expand_more</mat-icon>
+			</mat-list-item>
+			<div class="submenu" [ngClass]="{'expanded' : showHelpMenu}">
+        <mat-list-item [routerLink]="['about']">О программе</mat-list-item>
+				<mat-list-item>Сообщить об ошибке</mat-list-item>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content">
+      <router-outlet #o="outlet"></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

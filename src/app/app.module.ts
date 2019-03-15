@@ -5,11 +5,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core';
+import { BarComponent } from './core/bar/bar.component';
 import { SharedModule } from './shared';
 import { StaticModule } from './static';
+import { OperationModule } from './operation/operation.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BarComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -17,6 +19,7 @@ import { StaticModule } from './static';
     SharedModule,
     CoreModule,
     StaticModule,
+    OperationModule,
     AppRoutingModule
   ],
   providers: [],

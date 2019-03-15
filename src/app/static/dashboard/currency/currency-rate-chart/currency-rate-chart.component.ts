@@ -20,7 +20,7 @@ export class CurrencyRateChartComponent implements OnInit {
     nominal: 1
   };
   beginDate: Date = new Date('2017-01-01');
-  endDate: Date = new Date('2018-01-01');
+  endDate: Date = new Date('2019-01-01');
   readonly currencies: ReadonlyArray<CbrCurrency> = [
     { id: 'R01239', isoNumCode: '978', isoCharCode: 'EUR', nominal: 1 },
     { id: 'R01035', isoNumCode: '826', isoCharCode: 'GBP', nominal: 1 },
@@ -51,6 +51,7 @@ export class CurrencyRateChartComponent implements OnInit {
     }
 
     // Запрос и обработка курсов валют
+    //FIXME data[i].length всегда 0
     zip.apply(null, batch).subscribe((data) => {
       // Таблица графика
       const chartTable: (string | number)[][] = [];
@@ -59,10 +60,12 @@ export class CurrencyRateChartComponent implements OnInit {
       const firstRow: (string)[] = [];
       firstRow.push('Дата');
       for (let i = 0; i < data.length; i++) {
-        const idx: number = this.currencies.findIndex(
-          (currency) => currency.id === data[i][0].cbrCurrencyId
-        );
-        firstRow.push(this.currencies[idx].isoCharCode);
+        if (data[i].length > 0) {
+          const idx: number = this.currencies.findIndex(
+            (currency) => currency.id === data[i][0].cbrCurrencyId
+          );
+          firstRow.push(this.currencies[idx].isoCharCode);
+        }
       }
       chartTable.push(firstRow);
 
