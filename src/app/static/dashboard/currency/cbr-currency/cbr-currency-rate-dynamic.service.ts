@@ -57,8 +57,8 @@ export class CbrCurrencyRateDynamicService {
 
     const nodes: HTMLCollectionOf<Element> = doc.getElementsByTagName('Record');
     if (nodes) {
-      for (let i = 0; i < nodes.length; i++) {
-        const element: Element = nodes[i];
+      for (const it of nodes) {
+        const element: Element = it;
 
         const rateDateString: string = element.attributes.getNamedItem('Date').value;
         const rateDate: Date = new Date(
@@ -70,9 +70,8 @@ export class CbrCurrencyRateDynamicService {
         );
         let rateValue = 0;
 
-        const rateNodes: NodeList = nodes[i].childNodes;
-        for (let i2 = 0; i2 < rateNodes.length; i2++) {
-          const rateNode: Node = rateNodes[i2];
+        const rateNodes: NodeList = it.childNodes;
+        for (const rateNode of rateNodes) {
           if (rateNode.childNodes.length === 0) {
             continue;
           }

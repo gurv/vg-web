@@ -36,8 +36,8 @@ export class CbrCurrencyService {
 
     const nodes: HTMLCollectionOf<Element> = doc.getElementsByTagName('Item');
     if (nodes) {
-      for (let i = 0; i < nodes.length; i++) {
-        const id: string = nodes[i].getAttribute('ID');
+      for (const node of nodes) {
+        const id: string = node.getAttribute('ID');
         let name: string;
         let engName: string;
         let parentCode: string;
@@ -45,9 +45,8 @@ export class CbrCurrencyService {
         let isoCharCode: string;
         let nominal = 0;
 
-        const curNodes: NodeList = nodes[i].childNodes;
-        for (let i2 = 0; i2 < curNodes.length; i2++) {
-          const curNode: Node = curNodes[i2];
+        const curNodes: NodeList = node.childNodes;
+        for (const curNode of curNodes) {
           if (curNode.childNodes.length === 0) {
             continue;
           }

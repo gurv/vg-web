@@ -63,13 +63,12 @@ export class CbrCurrencyRateService {
 
     const nodes: HTMLCollectionOf<Element> = doc.getElementsByTagName('Valute');
     if (nodes) {
-      for (let i = 0; i < nodes.length; i++) {
+      for (const node of nodes) {
         const cbrCurrencyId = 'TODO'; // TODO связать с...
         let value = 0;
 
-        const rateNodes: NodeList = nodes[i].childNodes;
-        for (let i2 = 0; i2 < rateNodes.length; i2++) {
-          const rateNode: Node = rateNodes[i2];
+        const rateNodes: NodeList = node.childNodes;
+        for (const rateNode of rateNodes) {
           switch (rateNode.nodeName) {
             case 'Value':
               value = +rateNode.childNodes[0].nodeValue.replace(',', '.');

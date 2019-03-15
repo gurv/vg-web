@@ -40,10 +40,10 @@ export class CurrencyRateChartComponent implements OnInit {
   getData(): void {
     // Подготовка пакета запросов курсов валют
     const batch: Array<Observable<CbrCurrencyRate[]>> = [];
-    for (let i = 0; i < this.currencies.length; i++) {
+    for (const it of this.currencies) {
       batch.push(
         this.cbrCurrencyRateDynamicService.getCurrencyRates(
-          this.currencies[i],
+          it,
           this.beginDate,
           this.endDate
         )
@@ -59,10 +59,10 @@ export class CurrencyRateChartComponent implements OnInit {
       // Заполнение первой строки таблицы, которая содержит заголовок дат и валют
       const firstRow: string[] = [];
       firstRow.push('Дата');
-      for (let i = 0; i < data.length; i++) {
-        if (data[i].length > 0) {
+      for (const it of data) {
+        if (it.length > 0) {
           const idx: number = this.currencies.findIndex(
-            (currency) => currency.id === data[i][0].cbrCurrencyId
+            (currency) => currency.id === it[0].cbrCurrencyId
           );
           firstRow.push(this.currencies[idx].isoCharCode);
         }
