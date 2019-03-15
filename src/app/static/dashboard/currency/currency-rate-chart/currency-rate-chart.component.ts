@@ -51,7 +51,7 @@ export class CurrencyRateChartComponent implements OnInit {
     }
 
     // Запрос и обработка курсов валют
-    //FIXME data[i].length всегда 0
+    // FIXME data[i].length всегда 0
     zip.apply(null, batch).subscribe((data) => {
       // Таблица графика
       const chartTable: (string | number)[][] = [];

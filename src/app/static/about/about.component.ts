@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-//FIXME не разобрался почему это не работает. См. коммент в about.module.ts
-//import { ToolchainComponent } from './toolchain/toolchain.component'
+// FIXME не разобрался почему это не работает. См. коммент в about.module.ts
+// import { ToolchainComponent } from './toolchain/toolchain.component'
 
 @Component({
   templateUrl: './about.component.html',

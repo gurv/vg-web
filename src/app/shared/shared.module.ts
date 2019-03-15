@@ -23,7 +23,7 @@ import {
   MatSlideToggleModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-//import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+// import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 @NgModule({
   imports: [
