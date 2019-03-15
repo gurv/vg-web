@@ -10,12 +10,12 @@ before_script:
   - npm install -g @angular/cli
 script:
 - ng lint
-- ng build --prod --base-href https://gurv.github.io/vg/
+- ng build --output-path=last-build/ --configuration=production --base-href https://gurv.github.io/vg/
 
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: dist/vg
+  local_dir: last-build/
   on:
     branch: master
