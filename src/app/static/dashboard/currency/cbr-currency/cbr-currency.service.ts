@@ -7,9 +7,9 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { CbrCurrency } from './cbr-currency';
+import { ICbrCurrency } from './cbr-currency';
 
-interface Response {
+interface IResponse {
   readonly text: string;
 }
 
@@ -19,17 +19,17 @@ export class CbrCurrencyService {
 
   constructor(private http: HttpClient) {}
 
-  getCurrencies(): Observable<CbrCurrency[]> {
+  getCurrencies(): Observable<ICbrCurrency[]> {
     return this.http.get(this.url).pipe(
-      map((response: HttpResponse<Response>) => this.parseXml(response.body.text)),
-      tap((data: CbrCurrency[]) =>
+      map((response: HttpResponse<IResponse>) => this.parseXml(response.body.text)),
+      tap((data: ICbrCurrency[]) =>
         console.log('Подготовлен список валют Банка России в количестве', data.length, 'шт.')
       )
     );
   }
 
-  private parseXml(xml: string): CbrCurrency[] {
-    const result: CbrCurrency[] = [];
+  private parseXml(xml: string): ICbrCurrency[] {
+    const result: ICbrCurrency[] = [];
 
     const parser = new DOMParser();
     const doc: XMLDocument = parser.parseFromString(xml, 'text/xml');
@@ -81,7 +81,7 @@ export class CbrCurrencyService {
           isoNumCode,
           isoCharCode,
           nominal
-        } as CbrCurrency);
+        } as ICbrCurrency);
       }
     }
 

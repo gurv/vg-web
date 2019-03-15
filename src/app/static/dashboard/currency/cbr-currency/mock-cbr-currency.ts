@@ -1,9 +1,9 @@
 /**
  * Курсы валют Банка России
  */
-import { CbrCurrency } from './cbr-currency';
+import { ICbrCurrency } from './cbr-currency';
 
-export const CBR_CURRENCY_ARRAY: CbrCurrency[] = [
-  { id: 'R01235', name: 'Доллар США', iso4217NumericCode: '840', nominal: 1 } as CbrCurrency,
-  { id: 'R01239', name: 'Евро', iso4217NumericCode: '978', nominal: 1 } as CbrCurrency
+export const CBR_CURRENCY_ARRAY: ICbrCurrency[] = [
+  { id: 'R01235', name: 'Доллар США', iso4217NumericCode: '840', nominal: 1 } as ICbrCurrency,
+  { id: 'R01239', name: 'Евро', iso4217NumericCode: '978', nominal: 1 } as ICbrCurrency
 ];

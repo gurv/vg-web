@@ -7,7 +7,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { CbrCurrency } from './cbr-currency';
+import { ICbrCurrency } from './cbr-currency';
 import { CbrCurrencyRate } from './cbr-currency-rate';
 
 @Injectable()
@@ -17,7 +17,7 @@ export class CbrCurrencyRateDynamicService {
   constructor(private http: HttpClient) {}
 
   getCurrencyRates(
-    currency: CbrCurrency,
+    currency: ICbrCurrency,
     beginDate: Date,
     endDate: Date
   ): Observable<CbrCurrencyRate[]> {

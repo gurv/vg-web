@@ -7,10 +7,10 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { CbrCurrency } from './cbr-currency';
+import { ICbrCurrency } from './cbr-currency';
 import { CbrCurrencyRate } from './cbr-currency-rate';
 
-interface Response {
+interface IResponse {
   readonly text: string;
 }
 
@@ -23,7 +23,7 @@ export class CbrCurrencyRateService {
   getCurrencyRates(): Observable<any> {
     return this.http.get('/scripts/XML_daily.asp').pipe(
       tap((res) => console.log('result: ', res)),
-      tap((res: HttpResponse<Response>) =>
+      tap((res: HttpResponse<IResponse>) =>
         console.log('parse: ', this.xml2CurrencyRates(res.body.text))
       )
       /*
@@ -34,13 +34,13 @@ export class CbrCurrencyRateService {
   }
 
   getCurrencyRatesByCurrencyAndDateRange(
-    cbrCurrency: CbrCurrency,
+    cbrCurrency: ICbrCurrency,
     beginDate: Date,
     endDate: Date
   ): Observable<any> {
     return this.http.get('/scripts/XML_dynamic.asp').pipe(
       tap((res) => console.log('result: ', res)),
-      tap((res: HttpResponse<Response>) =>
+      tap((res: HttpResponse<IResponse>) =>
         console.log('parse: ', this.xml2CurrencyRates(res.body.text))
       )
     );

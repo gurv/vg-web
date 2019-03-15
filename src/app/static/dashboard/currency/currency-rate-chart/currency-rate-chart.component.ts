@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, zip } from 'rxjs';
-import { CbrCurrency } from '../cbr-currency/cbr-currency';
+import { ICbrCurrency } from '../cbr-currency/cbr-currency';
 import { CbrCurrencyRate } from '../cbr-currency/cbr-currency-rate';
 import { CbrCurrencyRateDynamicService } from '../cbr-currency/cbr-currency-rate-dynamic.service';
 import { CbrCurrencyService } from '../cbr-currency/cbr-currency.service';
@@ -13,15 +13,15 @@ import { CbrCurrencyService } from '../cbr-currency/cbr-currency.service';
 })
 export class CurrencyRateChartComponent implements OnInit {
   readonly data;
-  readonly currency: CbrCurrency = {
+  readonly currency: ICbrCurrency = {
     id: 'R01235',
     isoNumCode: '840',
     isoCharCode: 'USD',
     nominal: 1
-  } as CbrCurrency;
+  } as ICbrCurrency;
   beginDate: Date = new Date('2017-01-01');
   endDate: Date = new Date('2019-01-01');
-  readonly currencies: ReadonlyArray<CbrCurrency> = [
+  readonly currencies: ReadonlyArray<ICbrCurrency> = [
     { id: 'R01239', isoNumCode: '978', isoCharCode: 'EUR', nominal: 1 },
     { id: 'R01035', isoNumCode: '826', isoCharCode: 'GBP', nominal: 1 },
     { id: 'R01820', isoNumCode: '392', isoCharCode: 'JPY', nominal: 1 }
@@ -42,11 +42,7 @@ export class CurrencyRateChartComponent implements OnInit {
     const batch: Array<Observable<CbrCurrencyRate[]>> = [];
     for (const it of this.currencies) {
       batch.push(
-        this.cbrCurrencyRateDynamicService.getCurrencyRates(
-          it,
-          this.beginDate,
-          this.endDate
-        )
+        this.cbrCurrencyRateDynamicService.getCurrencyRates(it, this.beginDate, this.endDate)
       );
     }
 

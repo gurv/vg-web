@@ -1,7 +1,7 @@
 /**
  * Валюта Банка России
  */
-export interface CbrCurrency {
+export interface ICbrCurrency {
   id?: string;
   name?: string;
   engName?: string;
