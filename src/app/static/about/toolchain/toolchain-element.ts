@@ -1,4 +1,4 @@
-class ToolchainElement {
+export class ToolchainElement {
   name: string;
   version: string;
 

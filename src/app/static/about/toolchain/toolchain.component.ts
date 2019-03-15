@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
 import { environment as env } from '../../../../environments/environment';
+import { MatTableDataSource } from '@angular/material';
+import { ToolchainElement } from './toolchain-element';
 
 @Component({
   selector: 'app-toolchain',
