@@ -2,16 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { environment as env } from '../../../../environments/environment';
 
-class ToolchainElement {
-  name: string;
-  version: string;
-
-  constructor(name: string, version: string) {
-    this.name = name;
-    this.version = version;
-  }
-}
-
 @Component({
   selector: 'app-toolchain',
   templateUrl: './toolchain.component.html',
