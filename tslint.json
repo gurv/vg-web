@@ -6,7 +6,8 @@
     "no-submodule-imports": [true,
       "rxjs",
       "@angular",
-      "zone.js"
+      "zone.js",
+      "core-js/es7/reflect"
     ],
     "arrow-return-shorthand": true,
     "callable-types": true,
