@@ -42,6 +42,10 @@ ng build --output-path=last-build/ --configuration=production
 
 * Запуск в https://stackblitz.com/[StackBlitz]: https://stackblitz.com/github/gurv/vg-web
 
+* Сборка в https://travis-ci.org/gurv/vg-web[Travis CI]: https://travis-ci.org/gurv/vg-web
+
+* На https://pages.github.com/[GitHub Pages]: https://gurv.github.io/vg-web/index.html
+
 * Документация (https://compodoc.app/[Compodoc])
 +
 ```
