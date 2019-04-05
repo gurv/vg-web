@@ -53,3 +53,7 @@ npm run generate-docs
 npm run serve-docs
 # открыть http://127.0.0.1:8080
 ```
+
+== Documentation
+
+https://gurv.github.io/vg-doc/index.html
