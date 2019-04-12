@@ -1,18 +1,14 @@
-= Web
+= Web UI
 
 image:https://img.shields.io/travis/gurv/vg-web/master.svg[Build Status (Travis CI),link=https://travis-ci.org/gurv/vg-web]
+
+Project: https://gurv.github.io/vg-doc/index.html
 
 StackBlitz: https://stackblitz.com/github/gurv/vg-web
 
 GitHub Pages: https://gurv.github.io/vg-web/index.html
 
 CompoDoc: https://compodoc.app/
-
-== Documentation
-
-https://gurv.github.io/vg-doc/index.html
-
-== Разработчику
 
 ```
 # Установить Node.js последней версии
@@ -37,7 +33,3 @@ npm run generate-docs
 npm run serve-docs
 # открыть http://127.0.0.1:8080
 ```
-
-* VS Code
-
-Использовать задачи: start, test, e2e, lint
