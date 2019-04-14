@@ -6,10 +6,18 @@ sudo: required
 branches:
   only:
   - master
+addons:
+  apt:
+    sources:
+    - google-chrome
+    packages:
+    - google-chrome-stable
 services:
 - docker
 before_script:
 - npm install -g @angular/cli
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 script:
 - ng test --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
 - ng e2e
