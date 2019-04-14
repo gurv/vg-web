@@ -3,6 +3,7 @@
     "node_modules/codelyzer"
   ],
   "rules": {
+    "ordered-imports": false,
     "no-implicit-dependencies": false,
     "only-arrow-functions": [true, "allow-declarations", "allow-named-functions"],
     "no-submodule-imports": [true,

@@ -1,14 +1,14 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatPaginatorModule, MatTableModule } from '@angular/material';
-import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatTabsModule } from '@angular/material/tabs';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CurrencyListComponent } from './currency-list/currency-list.component'
 import { CurrencyRateChartComponent } from './currency-rate-chart/currency-rate-chart.component'
 
-import { CurrencyComponent } from './currency.component';
 import { from } from 'rxjs';
+import { CurrencyComponent } from './currency.component';
 
 describe('CurrencyComponent', () => {
   let component: CurrencyComponent;

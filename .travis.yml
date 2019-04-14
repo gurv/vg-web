@@ -9,7 +9,9 @@ branches:
 before_script:
 - npm install -g @angular/cli
 script:
+- ng test --watch=false
 - ng lint
+- npm run sonar
 - ng build --output-path=last-build/ --configuration=production --base-href https://gurv.github.io/vg/
 deploy:
   provider: pages
