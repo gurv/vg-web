@@ -6,13 +6,20 @@ sudo: required
 branches:
   only:
   - master
+services:
+- docker
 before_script:
 - npm install -g @angular/cli
 script:
 - ng test --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+- ng e2e
 - ng lint
 - npm run sonar
 - ng build --output-path=last-build/ --configuration=production --base-href https://gurv.github.io/vg/
+- docker image build -t gurv/web .
+after_success:
+- docker login -u="$CI_DOCKER_USERNAME" -p="$CI_DOCKER_PASSWORD"
+- docker push gurv/web:latest
 deploy:
   provider: pages
   skip_cleanup: true

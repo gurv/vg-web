@@ -30,6 +30,11 @@ ng serve --proxy-config proxy.conf.json
 # Сборка (в каталог last-build)
 ng build --output-path=last-build/ --configuration=production
 
+# Docker
+docker image build -t gurv/web .
+docker run -p 3000:80 --rm gurv/web
+# http://localhost:3000
+
 # Документация
 npm run generate-docs
 npm run serve-docs

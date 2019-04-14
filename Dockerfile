@@ -1,3 +1,6 @@
-FROM nginx:latest
+FROM nginx:alpine
 
-COPY last-build /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
+
+WORKDIR /usr/share/nginx/html
+COPY last-build/ .
