@@ -20,7 +20,8 @@ npm install -g @angular/cli
 # Загрузить
 git clone https://github.com/gurv/vg-web.git
 
-# тесты (http://www.protractortest.org/[Protractor])
+# Тесты
+ng test --watch=false
 ng e2e
 
 # Запуск в dev-режиме
