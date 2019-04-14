@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatTableModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { ToolchainComponent } from './toolchain/toolchain.component';
 
 import { AboutComponent } from './about.component';
 
@@ -8,7 +11,8 @@ describe('AboutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AboutComponent]
+      declarations: [AboutComponent, ToolchainComponent],
+      imports: [MatCardModule, MatTableModule]
     }).compileComponents();
   }));
 
