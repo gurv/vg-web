@@ -2,14 +2,17 @@
 
 image:https://img.shields.io/travis/gurv/vg-web/master.svg[Build Status (Travis CI),link=https://travis-ci.org/gurv/vg-web]
 image:https://sonarcloud.io/api/project_badges/measure?project=io.github.gurv:vg-web&metric=alert_status[Sonarcloud Status,link=https://sonarcloud.io/dashboard?id=io.github.gurv%3Avg-web]
+image:https://img.shields.io/github/contributors/gurv/vg-web.svg[Contributors,link=https://github.com/gurv/vg-web/graphs/contributors]
+image:https://img.shields.io/github/commit-activity/m/gurv/vg-web.svg[Activity,link=https://github.com/gurv/vg-web/pulse]
+image:https://img.shields.io/github/repo-size/gurv/vg-web.svg[repo size]
 
-Project: https://gurv.github.io/vg-doc/index.html
+* https://gurv.github.io/vg-doc/index.html[Documentation]
 
-StackBlitz: https://stackblitz.com/github/gurv/vg-web
+* StackBlitz: https://stackblitz.com/github/gurv/vg-web
 
-GitHub Pages: https://gurv.github.io/vg-web/index.html
+* GitHub Pages: https://gurv.github.io/vg-web/index.html
 
-CompoDoc: https://compodoc.app/
+* CompoDoc: https://compodoc.app/
 
 ```
 # Установить Node.js последней версии
