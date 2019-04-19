@@ -8,11 +8,11 @@ image:https://img.shields.io/github/repo-size/gurv/vg-web.svg[repo size]
 
 * https://gurv.github.io/vg-doc/index.html[Documentation]
 
-* StackBlitz: https://stackblitz.com/github/gurv/vg-web
+* https://stackblitz.com/github/gurv/vg-web[StackBlitz]
 
-* GitHub Pages: https://gurv.github.io/vg-web/index.html
+* https://gurv.github.io/vg-web/index.html[GitHub Pages]
 
-* CompoDoc: https://compodoc.app/
+* https://compodoc.app/[CompoDoc]
 
 ```
 # Установить Node.js последней версии
