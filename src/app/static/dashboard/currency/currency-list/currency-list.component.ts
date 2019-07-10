@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Iso4217Currency } from '../iso4217-currency/iso4217-currency';
 import { Iso4217CurrencyService } from '../iso4217-currency/iso4217-currency.service';
 
@@ -17,8 +19,8 @@ export class CurrencyListComponent implements AfterViewInit {
    * Данные
    */
   dataSource = new MatTableDataSource<Iso4217Currency>();
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   displayedColumns = ['alphabeticCode', 'numericCode', 'name'];
   constructor(private iso4217CurrencyService: Iso4217CurrencyService) {}
 
