@@ -23,7 +23,7 @@ script:
 - ng e2e
 - ng lint
 - npm run sonar
-- ng build --output-path=last-build/ --configuration=production --base-href https://gurv.github.io/vg/
+- ng build --output-path=last-build/ --configuration=production --base-href --base-href vg-web
 - docker image build -t gurv/web .
 after_success:
 - docker login -u="$CI_DOCKER_USERNAME" -p="$CI_DOCKER_PASSWORD"
