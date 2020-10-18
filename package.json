@@ -21,7 +21,7 @@
     "sonar": "sonar-scanner -Dsonar.login=$SONAR_TOKEN"
   },
   "dependencies": {
-    "@agm/core": "^1.0.0-beta.6",
+    "@agm/core": "1.1.0",
     "@angular/animations": "9.1.12",
     "@angular/cdk": "9.2.4",
     "@angular/common": "9.1.12",
