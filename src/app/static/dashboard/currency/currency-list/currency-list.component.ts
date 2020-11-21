@@ -18,9 +18,9 @@ export class CurrencyListComponent implements AfterViewInit {
   /**
    * Данные
    */
-  dataSource = new MatTableDataSource<Iso4217Currency>();
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  dataSource = new MatTableDataSource<Iso4217Currency>();
   displayedColumns = ['alphabeticCode', 'numericCode', 'name'];
   constructor(private iso4217CurrencyService: Iso4217CurrencyService) {}
 

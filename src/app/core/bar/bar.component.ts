@@ -6,6 +6,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./bar.component.scss']
 })
 export class BarComponent {
-  title = 'vg';
   @Output() toggleSidenav = new EventEmitter<void>();
+  title = 'vg';
 }

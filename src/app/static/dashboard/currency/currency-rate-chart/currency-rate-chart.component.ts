@@ -21,7 +21,7 @@ export class CurrencyRateChartComponent implements OnInit {
   } as any as ICbrCurrency;
   beginDate: Date = new Date('2017-01-01');
   endDate: Date = new Date('2019-01-01');
-  readonly currencies: ReadonlyArray<ICbrCurrency> = [
+  readonly currencies: ICbrCurrency[] = [
     { id: 'R01239', isoNumCode: '978', isoCharCode: 'EUR', nominal: 1 },
     { id: 'R01035', isoNumCode: '826', isoCharCode: 'GBP', nominal: 1 },
     { id: 'R01820', isoNumCode: '392', isoCharCode: 'JPY', nominal: 1 }
@@ -39,7 +39,7 @@ export class CurrencyRateChartComponent implements OnInit {
 
   getData(): void {
     // Подготовка пакета запросов курсов валют
-    const batch: Array<Observable<CbrCurrencyRate[]>> = [];
+    const batch: Observable<CbrCurrencyRate[]>[] = [];
     for (const it of this.currencies) {
       batch.push(
         this.cbrCurrencyRateDynamicService.getCurrencyRates(it, this.beginDate, this.endDate)
@@ -51,7 +51,7 @@ export class CurrencyRateChartComponent implements OnInit {
     // TODO (lint) zip is deprecated: resultSelector is no longer supported, pipe to map instead
     zip.apply(null, batch).subscribe((data) => {
       // Таблица графика
-      const chartTable: Array<Array<string | number>> = [];
+      const chartTable: (string | number)[][] = [];
 
       // Заполнение первой строки таблицы, которая содержит заголовок дат и валют
       const firstRow: string[] = [];
@@ -69,7 +69,7 @@ export class CurrencyRateChartComponent implements OnInit {
       // Заполнение таблицы данными курсов валют
       if (data.length > 0) {
         for (let r = 0; r < data[0].length; r++) {
-          const row: Array<string | number> = [];
+          const row: (string | number)[] = [];
           for (let c = 0; c < data.length; c++) {
             const rate: CbrCurrencyRate = data[c][r];
             if (c === 0) {
