@@ -21,7 +21,7 @@
     "sonar": "sonar-scanner -Dsonar.login=$SONAR_TOKEN"
   },
   "dependencies": {
-    "@agm/core": "1.1.0",
+    "@agm/core": "3.0.0-beta.0",
     "@angular/animations": "11.0.2",
     "@angular/cdk": "11.0.0",
     "@angular/common": "11.0.2",
@@ -33,6 +33,7 @@
     "@angular/platform-browser": "11.0.2",
     "@angular/platform-browser-dynamic": "11.0.2",
     "@angular/router": "11.0.2",
+    "@types/googlemaps": "3.39.12",
     "core-js": "^3.1.4",
     "ng2-google-charts": "^4.0.0",
     "rxjs": "^6.6.3",
