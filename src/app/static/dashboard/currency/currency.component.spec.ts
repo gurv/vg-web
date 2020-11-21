@@ -1,5 +1,5 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -15,7 +15,7 @@ describe('CurrencyComponent', () => {
   let component: CurrencyComponent;
   let fixture: ComponentFixture<CurrencyComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [CurrencyComponent, CurrencyListComponent, CurrencyRateChartComponent],
       imports: [MatPaginatorModule, MatSidenavModule, MatTableModule, MatTabsModule, HttpClientTestingModule, NoopAnimationsModule]
