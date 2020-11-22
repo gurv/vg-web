@@ -1,30 +1,11 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "module": "es2020",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom",
-      // TODO https://github.com/angular/material2/issues/14271
-      "dom.iterable"
-    ],
-    "baseUrl": "src",
-    "paths": {
-      "*": ["app/*"],
-      "@env/*": [
-        "environments/*"
-      ]
+  "files": [],
+  "references": [
+    {
+      "path": "./src/tsconfig.app.json"
     },
-    "downlevelIteration": true
-  }
+    {
+      "path": "./src/tsconfig.spec.json"
+    }
+  ]
 }

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared';
+import { SharedModule } from '@shared/shared.module';
 import { AboutModule } from './about/about.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { StaticRoutingModule } from './static-routing.module';

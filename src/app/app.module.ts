@@ -4,10 +4,10 @@ import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreModule } from './core';
-import { BarComponent } from './core/bar/bar.component';
+import { CoreModule } from '@core/core.module';
+import { BarComponent } from '@core/bar/bar.component';
 import { OperationModule } from './operation/operation.module';
-import { SharedModule } from './shared';
+import { SharedModule } from '@shared/shared.module';
 import { StaticModule } from './static';
 
 @NgModule({

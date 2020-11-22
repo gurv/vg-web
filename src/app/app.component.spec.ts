@@ -10,7 +10,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { BarComponent } from './core/bar/bar.component';
+import { BarComponent } from '@core/bar/bar.component';
 
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {

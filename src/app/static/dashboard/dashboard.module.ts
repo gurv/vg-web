@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../shared';
+import { SharedModule } from '@shared/shared.module';
 import { CurrencyModule } from './currency/currency.module';
 import { DashboardComponent } from './dashboard.component';
 import { MapModule } from './map/map.module';
