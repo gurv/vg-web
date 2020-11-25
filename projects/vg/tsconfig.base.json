@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "lib": [
+      "es2018",
+      "dom",
+      "dom.iterable" // TODO https://github.com/angular/material2/issues/14271
+    ],   
+    "paths": {
+      "*": ["src/app/*"], 
+      "@core/*": ["src/app/core/*"],
+      "@data/*": ["src/app/data/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@modules/*": ["src/app/modules/*"],
+      "@env": ["src/environments/environment"]
+    }
+  }
+}

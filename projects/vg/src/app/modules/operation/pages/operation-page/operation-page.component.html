@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-title>Операции</mat-card-title>
+  <mat-card-content>
+    <mat-slide-toggle
+        [(ngModel)]="alive"
+        (change)="onAlive()">
+      Включить
+    </mat-slide-toggle>
+    <button mat-raised-button (click)="createOperationBatch()">Создать новых 100 шт.</button>
+    <mat-slide-toggle
+        [(ngModel)]="processingStarted"
+        (change)="onChangeProcessingState()">
+      Обработка
+    </mat-slide-toggle>
+    <p>Количество: {{count}}</p>
+    <p>Новые: {{newCount}}</p>
+    <p>На исполнении: {{workingCount}}</p>
+  </mat-card-content>
+</mat-card>        

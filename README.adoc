@@ -11,7 +11,8 @@ image:https://github.com/gurv/vg-web/workflows/ci/badge.svg[GitHub CI]
 
 * https://gurv.github.io/vg-doc/index.html[Documentation]
 
-* https://stackblitz.com/github/gurv/vg-web[StackBlitz]
+// TODO https://github.com/stackblitz/core/issues/220
+//* https://stackblitz.com/github/gurv/vg-web[StackBlitz]
 
 * https://gurv.github.io/vg-web/index.html[GitHub Pages]
 
@@ -33,8 +34,8 @@ ng e2e
 # Запуск в dev-режиме
 ng serve --proxy-config proxy.conf.json
 
-# Сборка (в каталог last-build)
-ng build --output-path=last-build/ --configuration=production
+# Сборка (в каталог build/last)
+ng build --output-path=build/last/ --configuration=production
 
 # Docker
 docker image build -t gurv/web .
@@ -45,4 +46,8 @@ docker run -p 3000:80 --rm gurv/web
 npm run generate-docs
 npm run serve-docs
 # открыть http://127.0.0.1:8080
+
+# Полезное
+# Компиляция с расширенной диагностикой
+node ./node_modules/.bin/tsc --project ./projects/vg/tsconfig.app.json --noEmit --extendedDiagnostics
 ```

@@ -1,32 +1,26 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-      "module": "es2020",
-      "outDir": "./dist/out-tsc",
-      "sourceMap": true,
-      "declaration": false,
-      "moduleResolution": "node",
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "target": "es2015",
-      "typeRoots": [
-        "node_modules/@types"
-      ],
-      "lib": [
-        "es2017",
-        "dom",
-        // TODO https://github.com/angular/material2/issues/14271
-        "dom.iterable"
-      ],
-      "baseUrl": "src",
-      "paths": {
-        "*": ["app/*"], 
-        "@core/*": ["app/core/*"],
-        "@shared/*": ["app/shared/*"],
-        "@modules/*": ["app/modules/*"],
-        "@env": ["environments/environment"]
-      },
-      "downlevelIteration": true
+        "baseUrl": "./",
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "target": "es2015",
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "lib": [
+            "es2018",
+            "dom"
+        ]
+    },
+    "angularCompilerOptions": {
+        "fullTemplateTypeCheck": true,
+        "strictInjectionParameters": true
     }
-  }
-  
+}

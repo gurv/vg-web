@@ -1,11 +1,12 @@
 {
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "./build/vg/dist/",
+  },
   "files": [],
   "references": [
     {
-      "path": "./src/tsconfig.app.json"
-    },
-    {
-      "path": "./src/tsconfig.spec.json"
+      "path": "projects/vg/tsconfig.app.json"
     }
   ]
 }
