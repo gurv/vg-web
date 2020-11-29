@@ -1,23 +1,23 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-import { CurrencyListComponent } from './currency-list.component';
+import { CurrencyRateChartComponent } from './currency-rate-chart.component';
 
-describe('CurrencyListComponent', () => {
-  let component: CurrencyListComponent;
-  let fixture: ComponentFixture<CurrencyListComponent>;
+describe('CurrencyRateChartComponent', () => {
+  let component: CurrencyRateChartComponent;
+  let fixture: ComponentFixture<CurrencyRateChartComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [CurrencyListComponent],
+      declarations: [CurrencyRateChartComponent],
       imports: [HttpClientTestingModule],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CurrencyListComponent);
+    fixture = TestBed.createComponent(CurrencyRateChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

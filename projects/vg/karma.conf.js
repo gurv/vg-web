@@ -7,17 +7,30 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
+      require('karma-spec-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
       clearContext: false
     },
+    specReporter: {
+      maxLogLines: 5,
+      suppressErrorSummary: true,
+      suppressFailed: false,
+      suppressPassed: false,
+      suppressSkipped: true,
+      showSpecTiming: false
+    },
     coverageReporter: {
-      dir: require('path').join(__dirname, '../../coverage/vg'),
-      reporters: ['html', 'text-summary'],
+      dir: require('path').join(__dirname, '../../build/coverage/vg'),
+      reporters: [
+        { type: 'html', subdir: 'report-html' },
+        { type: 'text-summary', subdir: '.', file: 'text-summary.txt' },
+        { type: 'lcov', subdir: 'report-lcov' }
+    ],
       fixWebpackSourcePaths: true
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'spec', 'kjhtml'],
     customLaunchers: {
       ChromeHeadlessNoSandbox: {
         base: 'ChromeHeadless',

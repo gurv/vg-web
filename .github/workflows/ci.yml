@@ -1,25 +1,71 @@
-name: GitHub CI
+name: CI
 on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: NodeJs
+    - name: NodeJs ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
-        node-version: '10.x'
-    - name: Angular CLI
-      run: npm install -g @angular/cli
-    # FIXME 'Can't open /etc/init.d/xvfb'
-    # - run: sh -e /etc/init.d/xvfb start
-    # - run: ng test --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
-      # env:
-        # DISPLAY: ':99.0'
-    # FIXME 'Could not find module "@angular-devkit/build-angular"'
-    # - name: E2E
-      # run: ng e2e
-    # FIXME 'Could not find module "@angular-devkit/build-angular"'
-    # - name: Lint
-      # run: ng lint
+        node-version: ${{ matrix.node-version }}
+    - name: Prepare
+      run: npm install 
+    - name: Lint
+      run: npm run lint
+    - name: Test
+      run: npm run test
+    - name: Sonar
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    - name: Build
+      run: npm run build:prod
+    - name: Docker Buildx
+      uses: docker/setup-buildx-action@v1
+    - name: Login to DockerHub
+      uses: docker/login-action@v1 
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.CONTAINER_REGISTRY_PAT }}
+    - name: Image
+      id: docker_build
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./Dockerfile
+        tags: |
+          gurv/vg-web:latest
+          ghcr.io/gurv/vg-web:latest
+        push: true
+    - name: GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build/dist/vg
+    - name: Slack
+      if: always()
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        fields: repo,message
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    - name: Telegram
+      uses: appleboy/telegram-action@master
+      if: always()
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        args: ${{ github.repository }} ${{ job.status }}

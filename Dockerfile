@@ -9,4 +9,4 @@ RUN mkdir -p /var/cache/nginx/scgi_temp
 COPY nginx.conf /etc/nginx/nginx.conf
 
 WORKDIR /usr/share/nginx/html
-COPY last-build/ .
+COPY build/dist/vg .

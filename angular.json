@@ -12,7 +12,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/vg",
+            "outputPath": "build/dist/vg",
             "index": "projects/vg/src/index.html",
             "main": "projects/vg/src/main.ts",
             "polyfills": "projects/vg/src/polyfills.ts",
@@ -92,13 +92,9 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/vg/tsconfig.app.json",
-              "projects/vg/tsconfig.spec.json",
-              "projects/vg/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/vg/src/**/*.ts",
+              "projects/vg/src/**/*.html"
             ]
           }
         },

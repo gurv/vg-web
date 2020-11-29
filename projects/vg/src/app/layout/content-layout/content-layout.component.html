@@ -2,20 +2,10 @@
 <mat-sidenav-container class="container" autosize>
   <mat-sidenav #sidenav class="sidenav" mode="side">
     <mat-nav-list>
-        <mat-list-item [routerLink]="['dashboard']"
-            routerLinkActive
-            #routerLinkActiveInstance="routerLinkActive"
-            [class.list-item-active]="routerLinkActiveInstance.isActive">
+        <mat-list-item [routerLink]="['dashboard']">
           <mat-icon matListIcon>dashboard</mat-icon>
           Обзор
         </mat-list-item>
-        <!-- <mat-list-item [routerLink]="['operation']"
-            routerLinkActive
-            #routerLinkActiveInstance="routerLinkActive"
-            [class.list-item-active]="routerLinkActiveInstance.isActive">
-          <mat-icon matListIcon>dashboard</mat-icon>
-          Обзор2
-        </mat-list-item> -->
         <mat-divider></mat-divider>
         <mat-list-item *ngFor="let item of myRoutes"          
             [routerLink]="[item.route]">
@@ -39,7 +29,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="content">
-      <router-outlet #o="outlet"></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

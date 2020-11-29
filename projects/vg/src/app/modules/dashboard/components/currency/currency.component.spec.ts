@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -18,7 +19,10 @@ describe('CurrencyComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [CurrencyComponent, CurrencyListComponent, CurrencyRateChartComponent],
-      imports: [MatPaginatorModule, MatSidenavModule, MatTableModule, MatTabsModule, HttpClientTestingModule, NoopAnimationsModule]
+      imports: [MatPaginatorModule, MatSidenavModule, MatTableModule, MatTabsModule, HttpClientTestingModule, NoopAnimationsModule],
+      schemas: [
+        NO_ERRORS_SCHEMA
+      ]
     }).compileComponents();
   }));
 

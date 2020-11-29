@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-import { ToolchainComponent } from './toolchain.component';
+import { ContentLayoutComponent } from './content-layout.component';
 
-describe('ToolchainComponent', () => {
-  let component: ToolchainComponent;
-  let fixture: ComponentFixture<ToolchainComponent>;
+describe('ContentLayoutComponent', () => {
+  let component: ContentLayoutComponent;
+  let fixture: ComponentFixture<ContentLayoutComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ToolchainComponent],
+      declarations: [ContentLayoutComponent],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ToolchainComponent);
+    fixture = TestBed.createComponent(ContentLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,20 +1,19 @@
 = Web UI
 
-image:https://img.shields.io/travis/gurv/vg-web/master.svg[Build Status (Travis CI),link=https://travis-ci.org/gurv/vg-web]
-image:https://sonarcloud.io/api/project_badges/measure?project=io.github.gurv:vg-web&metric=alert_status[Sonarcloud Status,link=https://sonarcloud.io/dashboard?id=io.github.gurv%3Avg-web]
+image:https://github.com/gurv/vg-web/workflows/GitHub%20CI/badge.svg[build]
+// TODO >= 80%
+// image:https://sonarcloud.io/api/project_badges/measure?project=io.github.gurv:vg-web&metric=alert_status[Sonarcloud Status,link=https://sonarcloud.io/dashboard?id=io.github.gurv%3Avg-web]
 image:https://sonarcloud.io/api/project_badges/measure?project=io.github.gurv:vg-web&metric=coverage[Unit-Tests Overall Coverage,link=https://sonarcloud.io/dashboard?id=io.github.gurv%3vg-web]
 image:https://img.shields.io/github/contributors/gurv/vg-web.svg[Contributors,link=https://github.com/gurv/vg-web/graphs/contributors]
 image:https://img.shields.io/github/commit-activity/m/gurv/vg-web.svg[Activity,link=https://github.com/gurv/vg-web/pulse]
 image:https://img.shields.io/github/repo-size/gurv/vg-web.svg[repo size]
-image:https://dev.azure.com/gurv/vg/_apis/build/status/vg-web?branchName=master[Build Status]
-image:https://github.com/gurv/vg-web/workflows/ci/badge.svg[GitHub CI]
 
 * https://gurv.github.io/vg-doc/index.html[Documentation]
 
 // TODO https://github.com/stackblitz/core/issues/220
 //* https://stackblitz.com/github/gurv/vg-web[StackBlitz]
 
-* https://gurv.github.io/vg-web/index.html[GitHub Pages]
+* https://gurv.github.io/vg-web/#/auth[GitHub Pages]
 
 * https://compodoc.app/[CompoDoc]
 
@@ -29,13 +28,14 @@ git clone https://github.com/gurv/vg-web.git
 
 # Тесты
 ng test --watch=false
+ng test --watch=false --include=projects/vg/src/app/modules/dashboard/components/weather-dashboard/weather-dashboard.component.spec.ts
 ng e2e
 
 # Запуск в dev-режиме
 ng serve --proxy-config proxy.conf.json
 
-# Сборка (в каталог build/last)
-ng build --output-path=build/last/ --configuration=production
+# Сборка
+ng build --configuration=production
 
 # Docker
 docker image build -t gurv/web .

@@ -19,51 +19,37 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSortModule } from '@angular/material/sort';
 
-
+const materialModules = [
+  MatFormFieldModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatSelectModule,
+  MatTabsModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatChipsModule,
+  MatCardModule,
+  MatSidenavModule,
+  MatCheckboxModule,
+  MatListModule,
+  MatMenuModule,
+  MatIconModule,
+  MatTooltipModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatExpansionModule,
+  MatSlideToggleModule,
+  MatSortModule
+]
 @NgModule({
   declarations: [],
   imports: [
-    MatFormFieldModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatSelectModule,
-    MatTabsModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    MatChipsModule,
-    MatCardModule,
-    MatSidenavModule,
-    MatCheckboxModule,
-    MatListModule,
-    MatMenuModule,
-    MatIconModule,
-    MatTooltipModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatExpansionModule,
-    MatSlideToggleModule
+    ...materialModules
   ],
   exports: [
-    MatFormFieldModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatTabsModule,
-    MatChipsModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatSidenavModule,
-    MatListModule,
-    MatSelectModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatTooltipModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatExpansionModule,
-    MatSlideToggleModule
+    ...materialModules
   ]
 })
 export class MaterialModule {}
