@@ -1,6 +1,6 @@
 = Web UI
 
-image:https://github.com/gurv/vg-web/workflows/GitHub%20CI/badge.svg[build]
+image:https://github.com/gurv/vg-web/workflows/CI/badge.svg[build]
 // TODO >= 80%
 // image:https://sonarcloud.io/api/project_badges/measure?project=io.github.gurv:vg-web&metric=alert_status[Sonarcloud Status,link=https://sonarcloud.io/dashboard?id=io.github.gurv%3Avg-web]
 image:https://sonarcloud.io/api/project_badges/measure?project=io.github.gurv:vg-web&metric=coverage[Unit-Tests Overall Coverage,link=https://sonarcloud.io/dashboard?id=io.github.gurv%3vg-web]
