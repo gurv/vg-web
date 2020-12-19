@@ -1,0 +1,7 @@
+<button
+  mat-icon-button
+  [matTooltip]="link.value ? 'Unlink selection' : 'Link selection'"
+  (click)="switchLink()"
+>
+  <lib-icon [icon]="linkSelectionIcon" [state]="link.value ? '' : 'unlink'"></lib-icon>
+</button>

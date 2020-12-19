@@ -1,0 +1,47 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/ide/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/ide/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/vendors/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/vendors/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/commons/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/commons/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/weather/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/weather/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/currency/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/currency/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/storage/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/storage/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/operation/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/operation/tsconfig.spec.json"
+    }
+  ]
+}

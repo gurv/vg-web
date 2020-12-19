@@ -1,0 +1,14 @@
+{
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "typescript.tsc.autoDetect": "off",
+    "npm.autoDetect": "on",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true,
+        "source.fixAll.eslint": false
+    },
+    "editor.formatOnSave": true,
+    "eslint.validate": [ "javascript", "typescript", "html"],
+    "eslint.options": {
+        "extensions": [".js", ".ts", "html"]
+    },
+}

@@ -1,0 +1,79 @@
+@import 'app-filler';
+
+:host {
+  @include block-filler();
+}
+
+.split-panes {
+  @include block-filler();
+  &.drag.horizontal {
+    cursor: col-resize;
+  }
+  &.drag.vertical {
+    cursor: row-resize;
+  }
+}
+
+.split-pane {
+  overflow: hidden;
+}
+
+// Also udate the fxFlex="2px" in the html template if you update the vg-size
+$vg-size: 2px;
+$vg-sensitivity: 2px;
+$vg-color: mat-color($app-background, 900);
+$vg-color-hover: mat-color($app-primary);
+
+.vg-vertical {
+  overflow: visible;
+  max-width: $vg-size;
+  z-index: 999999;
+
+  .vg-handle {
+    @include block-filler();
+    cursor: col-resize;
+    margin-left: -$vg-sensitivity;
+    width: 2 * $vg-sensitivity + $vg-size;
+
+    &:hover,
+    &.dragged {
+      .vg-color {
+        background-color: $vg-color-hover;
+      }
+    }
+
+    .vg-color {
+      @include block-filler();
+      margin-left: $vg-sensitivity;
+      width: $vg-size;
+      background-color: $vg-color;
+    }
+  }
+}
+
+.vg-horizontal {
+  overflow: visible;
+  max-height: $vg-size;
+  z-index: 999999;
+
+  .vg-handle {
+    @include block-filler();
+    cursor: row-resize;
+    margin-top: -$vg-sensitivity;
+    height: 2 * $vg-sensitivity + $vg-size;
+
+    &:hover,
+    &.dragged {
+      .vg-color {
+        background-color: $vg-color-hover;
+      }
+    }
+
+    .vg-color {
+      @include block-filler();
+      margin-top: $vg-sensitivity;
+      height: $vg-size;
+      background-color: $vg-color;
+    }
+  }
+}

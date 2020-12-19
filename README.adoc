@@ -1,1 +1,4 @@
 = Web
+
+  // FontAwesome icons are visible here https://fontawesome.com
+  // Material icons are visible here https://material.io/tools/icons/?style=baseline

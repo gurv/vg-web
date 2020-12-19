@@ -1,0 +1,41 @@
+<div
+  [fxLayout]="direction.fxLayout"
+  [ngClass]="{
+    'split-panes': true,
+    drag: !!drag,
+    vertical: directionId === 'vertical',
+    horizontal: directionId === 'horizontal'
+  }"
+  (mousemove)="cursorDragged($event)"
+  (mouseleave)="stopDrag()"
+  (mouseup)="stopDrag()"
+>
+  <ng-container *ngFor="let pane of panes; index as i; last as isLast">
+    <div
+      libSplitPane
+      class="split-pane"
+      [fxFlex]="configurations[i].visibleSize"
+      [fxHide]="configurations[i].visibleSize === 0"
+    >
+      <ng-template [cdkPortalOutlet]="pane.portal"></ng-template>
+    </div>
+    <div
+      fxFlex="2px"
+      *ngIf="isLast === false"
+      libSplitVg
+      [fxHide]="configurations[i].visibleSize === 0 || configurations[i + 1].visibleSize === 0"
+      [ngClass]="{
+        'vg-vertical': directionId === 'horizontal',
+        'vg-horizontal': directionId === 'vertical'
+      }"
+    >
+      <div
+        class="vg-handle"
+        [ngClass]="{ dragged: drag?.beforeIndex === i }"
+        (mousedown)="cursorPressed(i, $event)"
+      >
+        <div class="vg-color"></div>
+      </div>
+    </div>
+  </ng-container>
+</div>

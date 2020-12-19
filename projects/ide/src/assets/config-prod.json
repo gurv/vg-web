@@ -1,0 +1,20 @@
+{
+  "version": "ide-1",
+  "applicationId": "ide",
+  "backendApiUrl": "/api",
+  "docUrl": "/doc",
+  "readmeNode": {
+    "path": "README.md",
+    "type": "FILE",
+    "depth": 0,
+    "length": 0,
+    "lastModified": 0
+  },
+  "keycloakConfiguration": {
+    "url": "/auth",
+    "realm": "vg",
+    "clientId": "vg-web"
+  },
+  "expectedRoles": ["ADMIN"],
+  "sseChannels" : ["STORAGE", "RUNTIME"]
+}

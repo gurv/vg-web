@@ -1,0 +1,63 @@
+import { TestBed } from '@angular/core/testing';
+import { StorageTreeScrollService } from './storage-tree-scroll.service';
+import { StorageTreeControlService } from 'projects/storage/src/lib/services/storage-tree-control/storage-tree-control.service';
+import { StorageTreeDataSourceService } from 'projects/storage/src/lib/services/storage-tree-data-source/storage-tree-data-source.service';
+import { storageTreeDataSourceServiceSpy } from 'projects/storage/src/lib/services/storage-tree-data-source/storage-tree-data-source.service.spec';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { storageTreeControlServiceSpy } from 'projects/storage/src/lib/services/storage-tree-control/storage-tree-control.service.spec';
+import { testStorageFileNode } from 'projects/storage/src/lib/entities/storage-node.spec';
+import SpyObj = jasmine.SpyObj;
+
+export const storageTreeScrollServiceSpy = () => {
+  // eslint-disable-next-line jasmine/no-unsafe-spy
+  const spy = jasmine.createSpyObj('StorageTreeScrollService', ['init', 'updateScroll']);
+  return spy;
+};
+
+describe('StorageTreeScrollService', () => {
+  let service: StorageTreeScrollService;
+  let treeControl: SpyObj<StorageTreeControlService>;
+  let treeData: SpyObj<StorageTreeDataSourceService>;
+
+  beforeEach(() => {
+    treeControl = storageTreeControlServiceSpy();
+    treeData = storageTreeDataSourceServiceSpy();
+
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: StorageTreeControlService, useValue: treeControl },
+        { provide: StorageTreeDataSourceService, useValue: treeData },
+        StorageTreeScrollService,
+      ],
+    });
+    service = TestBed.inject(StorageTreeScrollService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
+  it('should update scroll', () => {
+    const spy = jasmine.createSpyObj('CdkVirtualScrollViewport', ['scrollToIndex']);
+    const node = testStorageFileNode();
+    treeControl._lastSelection = node;
+    treeData.findIndex.and.returnValue(42);
+    service.init(spy);
+    service.updateScroll();
+
+    expect(spy.scrollToIndex).toHaveBeenCalledWith(42, 'smooth');
+    expect(treeData.findIndex).toHaveBeenCalledWith(node);
+  });
+
+  it('should not update scroll', () => {
+    const spy = jasmine.createSpyObj('CdkVirtualScrollViewport', ['scrollToIndex']);
+    const node = testStorageFileNode();
+    treeControl._lastSelection = null;
+    treeData.findIndex.and.returnValue(42);
+    service.init(spy);
+    service.updateScroll();
+
+    expect(spy.scrollToIndex).not.toHaveBeenCalled();
+    expect(treeData.findIndex).not.toHaveBeenCalled();
+  });
+});
